@@ -47,4 +47,36 @@
     price: 6000,
     img: "https://www.autoguide.com/blog/wp-content/uploads/2016/02/2016-bmw-m2.jpg",
   },
+  {
+    key: "7",
+    name: "Chevrolet Camaro SS",
+    description:
+      "As long as there are sports cars, the Camaro will be a staple in the collectible market. The latest sixth-generation Chevrolet Camaro SS retains a V8 engine pushing out 455 hp, although the standard model can be had with a turbocharged four-cylinder or V6. We can only hope that the Ford Mustang vs. Chevrolet Camaro debate lives on for a few more decades, as each automaker continues to step up their game in order to outdo one another.",
+    price: 6500,
+    img: "https://www.autoguide.com/blog/wp-content/uploads/2016/02/2016-chevrolet-camaro-ss.jpg",
+  },
+  {
+    key: "8",
+    name: "Ford Focus RS",
+    description:
+      "The Ford Focus RS will finally come to the U.S. this year, and the wait has been worth it for hot hatch lovers. With 350 hp and 350 lb-ft of torque coupled with a six-speed manual transmission and all-wheel drive, there really isn’t a whole lot to complain about. Best of all, the Ford Focus RS won’t have any real competition, especially now that Mitsubishi has decided to axe the Evolution. We can’t wait to get behind the wheel.",
+    price: 7000,
+    img: "https://www.autoguide.com/blog/wp-content/uploads/2016/02/ford-focus-rs.jpg",
+  },
+  {
+    key: "9",
+    name: "Mazda MX-5 Miata",
+    description:
+      "The Ford Focus RS will finally come to the U.S. this year, and the wait has been worth it for hot hatch lovers. With 350 hp and 350 lb-ft of torque coupled with a six-speed manual transmission and all-wheel drive, there really isn’t a whole lot to complain about. Best of all, the Ford Focus RS won’t have any real competition, especially now that Mitsubishi has decided to axe the Evolution. We can’t wait to get behind the wheel.",
+    price: 8000,
+    img: "https://www.autoguide.com/blog/wp-content/uploads/2016/02/2016-Mazda-MX-5-Miata.jpg",
+  },
+  {
+    key: "10",
+    name: "2016 Dodge Viper SRT Coupe",
+    description:
+      "The Dodge Viper is on its way out and as one of America’s most iconic sports cars, it’s no surprise it’s being named a collectible. With nearly every sports car turning to forced induction for enhanced performance and fuel economy, the Viper is unique because it still uses a naturally aspirated 8.4-liter V10 engine. It’s going to be a sad day when the Viper ceases to exist, but hopefully the American automaker has something up its sleeves to replace it.",
+    price: 9500,
+    img: "https://www.autoguide.com/blog/wp-content/uploads/2016/02/2015-dodge-viper.jpg",
+  },
 ];

@@ -1,22 +1,26 @@
 import React from 'react';
-import {useState} from 'react';
+import { useState, useEffect } from "react";
 import Car from '../Car/Car';
 
 const Cars = () => {
     const [cars, setCars] = useState([]);
 
+    useEffect(() => {
     fetch("http://localhost:5000/cars")
     .then(res => res.json())
     .then(data => {
-        setCars(data)
+        setCars(data.slice(0, 6));
     })
+    }, [])
 
     return (
-      <div>
-        <h2>Total cars: {cars?.length}</h2>
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-          {cars.map((car) => (
-            <Car car={car.key} car={car}></Car>
+      <div className="mt-5">
+        <h1 className="fw-bolder" style={{ color: "red" }}>
+          Total car
+        </h1>
+        <div className="row pb-5">
+          {cars?.map((car, index) => (
+            <Car car={car} key={index}></Car>
           ))}
         </div>
       </div>

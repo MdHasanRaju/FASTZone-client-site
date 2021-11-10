@@ -5,18 +5,19 @@ const Car = ({car}) => {
     const {key,img, name, price,description} = car;
 
     return (
-      <div className="col">
-        <div class="card h-100">
-      <img src={img} class="card-img-top" alt="..."/>
-      <div class="card-body text-start">
-        <h5 class="card-title">{name}</h5>
-        <p class="card-text">{description?.slice(0, 130)}</p>
-        <p class="card-text">${price}</p>
-        <Link>
-            <button className="btn btn-primary">PURCHASE NOW</button>
-        </Link>
-      </div>
-    </div>
+      <div className="col-lg-4 col-md-6 col-sm-12">
+        <div className="card-group mt-3">
+          <div className="card p-4"> 
+              <img style={{ width: "100%" }} src={img} alt="" />
+            <div className="card-body text-start">
+              <h3>{name}</h3>
+              <p className="card-text">{description?.slice(0, 130)}..</p>
+              <h5 className="card-title">${price}</h5>
+              <Link><button className="btn btn-info">PURCHASE NOW</button></Link>
+            </div>
+            
+          </div>
+        </div>
       </div>
     );
 };
