@@ -1,0 +1,7 @@
+.banner {
+    background-image: url('../../../images/banner-car2.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
