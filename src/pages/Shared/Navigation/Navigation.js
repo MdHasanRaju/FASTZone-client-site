@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 
 const Navigation = () => {
+    const {user, logout} = useAuth();
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -21,15 +24,21 @@ const Navigation = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <Link to="/home" className="nav-item nav-link active">
-                Home
-              </Link>
-              <Link to="/myOrders" className="nav-item">
-                My Orders
-              </Link>
-              <Link to="/addReview" className="nav-item">
-                Add Review
-              </Link>
+              <li>
+                <Link to="/home" className="nav-item nav-link active">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/myOrders" className="nav-item nav-link ">
+                  My Orders
+                </Link>
+              </li>
+              <li>
+                <Link to="/addReview" className="nav-item nav-link ">
+                  Add Review
+                </Link>
+              </li>
             </ul>
             <form className="d-flex">
               <input
@@ -38,12 +47,23 @@ const Navigation = () => {
                 placeholder="Search"
                 aria-label="Search"
               />
-
-              <Link to="/login">
-                <button className="btn btn-outline-success" type="submit">
-                  Login
-                </button>
-              </Link>
+              {user?.email ? (
+                <Link to="/home">
+                  <button
+                    onClick={logout}
+                    className="btn btn-outline-success"
+                    type="submit"
+                  >
+                    Log Out
+                  </button>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <button className="btn btn-outline-success" type="submit">
+                    Login
+                  </button>
+                </Link>
+              )}
             </form>
           </div>
         </div>

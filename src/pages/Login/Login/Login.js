@@ -3,6 +3,8 @@ import { NavLink, useLocation, useHistory } from "react-router-dom";
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
+    // const { user, loginUser, isLoading, authError, signInWithGoogle } =
+    //   useAuth();
 
     const history = useHistory();
     const location = useLocation();
