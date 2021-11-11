@@ -1,32 +1,62 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import useAuth from '../../../Hooks/useAuth';
 
 
 const AddReview = () => {
-const {
-  register,
-  handleSubmit,
-  watch,
-  formState: { errors },
-} = useForm();
-const onSubmit = (data) => console.log(data);
+ const { register, handleSubmit, watch, errors } = useForm();
+  const { user } = useAuth();
+  // console.log(user)
 
+  const onSubmit = (data) => {
+    // console.log(data);
+    fetch("http://localhost:5000/addReview", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result));
+    
+  };
+  return (
+    <div>
+      <h1>Review</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          className="input-field"
+          name="customerName"
+          value={user?.displayName}
+          {...register("customerName", { required: true })}
+        />
+        <br />
+        <input
+          className="input-field"
+          name="email"
+          value={user?.email}
+          type="email"
+          {...register("email", { required: true })}
+        />
+        <br />
+        <input
+          className="input-field"
+          name="comments"
+          placeholder="Comments"
+          {...register("comments", { required: true })}
+        />
+        <br />
 
-return (
-  <div className="container">
-    <h2>Write down your comment</h2>
-    <form onSubmit={handleSubmit(onSubmit)} className="w-50 mx-auto ">
-      <input defaultValue="Name" {...register("customerName")} />
-      <br />
-      <input {...register("comment", { required: true })} />
-      <br />
-      {errors.exampleRequired && <span>This field is required</span>}
+        <input
+          className="submit-btn btn btn-danger mt-3"
+          type="submit"
+          value="Register"
+        />
+      </form>
+    </div>
+  );
 
-      <input className="" type="submit" />
-    </form>
-  </div>
-);
 
 };
 
 export default AddReview;
+
