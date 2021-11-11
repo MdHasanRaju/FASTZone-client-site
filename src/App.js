@@ -18,6 +18,9 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
+            {/* <Route path="/explore">
+              <Home />
+            </Route> */}
             <Route path="/login">
               <Login />
             </Route>

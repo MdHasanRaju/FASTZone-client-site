@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation, useHistory } from "react-router-dom";
+import useAuth from '../../../Hooks/useAuth';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    // const { user, loginUser, isLoading, authError, signInWithGoogle } =
-    //   useAuth();
+    const { user, loginUser, isLoading, authError} = useAuth();
 
     const history = useHistory();
     const location = useLocation();
@@ -18,17 +18,17 @@ const Login = () => {
      };
 
      const handleLoginSubmit = (e) => {
-    //    loginUser(loginData.email, loginData.password);
-        console.log( loginData.email, loginData.password)
+       loginUser(loginData.email, loginData.password, location, history);
+       console.log( loginData.email, loginData.password)
 
        e.preventDefault();
      };
 
     return (
-      <div className="container">
+      <div className="container my-5">
         <form
           onSubmit={handleLoginSubmit}
-          className="w-50 mx-auto bg-secondary p-3 my-4"
+          className="w-50 mx-auto bg-secondary py-5 px-2"
         >
           <div className="mb-3">
             <h2>Login</h2>
