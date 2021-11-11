@@ -12,7 +12,6 @@ import {
   signOut,
 } from "firebase/auth";
 
-
 initializeFirebase();
 
 const useFirebase = () => {
@@ -33,7 +32,7 @@ const useFirebase = () => {
         const newUser = { email, displayName: name };
         setUser(newUser);
         // save user to the database
-
+        
         // saveUser(email, name, "POST");
         // send name to firebase after creation
         updateProfile(auth.currentUser, {

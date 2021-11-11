@@ -70,15 +70,22 @@ const Register = () => {
         <button type="submit" className="btn btn-primary w-100">
           REGISTER
         </button>
-        <NavLink
-          style={{ textDecoration: "none", color: "white" }}
-          to="/login"
-        >
+        <NavLink style={{ textDecoration: "none", color: "white" }} to="/login">
           Already Registered? Please Login
         </NavLink>
-        {/* {isLoading && <CircularProgress></CircularProgress>}
-          {user?.email && <Alert severity="success">Login Successfully</Alert>}
-          {authError && <Alert severity="error">{authError}</Alert>} */}
+        {isLoading && (
+          <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        )}
+        {user?.email && (
+          alert('Register successfully done')
+        )}
+        {authError && (
+          <div class="alert alert-danger" role="alert">
+            {authError}
+          </div>
+        )}
       </form>
     </div>
   );

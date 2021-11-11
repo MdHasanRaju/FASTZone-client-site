@@ -17,7 +17,7 @@ const Cars = () => {
 
       <div className="mt-5">
         <h1 className="fw-bolder" style={{ color: "red" }}>
-          Total Cars
+          Total Cars: {cars.length}
         </h1>
         {!cars?.length ? <div class="spinner-border text-danger" role="status">
           <span class="visually-hidden">Loading...</span>

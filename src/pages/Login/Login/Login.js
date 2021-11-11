@@ -52,41 +52,33 @@ const Login = () => {
           <button type="submit" className="btn btn-primary w-100">
             LOGIN
           </button>
-          <NavLink style={{ textDecoration: "none", color:"white"}} to="/register">
+          <NavLink
+            style={{ textDecoration: "none", color: "white" }}
+            to="/register"
+          >
             New User? Please Register
           </NavLink>
-          {/* {isLoading && <CircularProgress></CircularProgress>}
-          {user?.email && <Alert severity="success">Login Successfully</Alert>}
-          {authError && <Alert severity="error">{authError}</Alert>} */}
+          <br />
+          {isLoading && (
+            <div class="spinner-border text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          )}
+          {user?.email && (
+            <div class="alert alert-success" role="alert">
+              Login Successfully
+            </div>
+          )}
+          {authError && (
+            <div class="alert alert-danger" role="alert">
+              {authError}
+            </div>
+          )}
         </form>
       </div>
     );
 
-      {/* <div classNameName="container">
-        <div>
-          <h2>Login</h2>
-          <form onSubmit={handleLoginSubmit}>
-            <input
-              onChange={handleOnChange}
-              style={{ width: "75%", m: 1 }}
-              type="email"
-              name="email"
-              placeholder="Your Email"
-            />
-            <input
-              onChange={handleOnChange}
-              style={{ width: "75%", m: 1 }}
-              type="password"
-              name="password"
-              placeholder="Your Password"
-            />
-           
-            <button type="submit"
-                  classNameName="btn btn-primary"
-                  style={{ width: "75%", m: 1 }}></button>
-          </form>
-        </div>
-      </div> */}
+      
     
 };
 
