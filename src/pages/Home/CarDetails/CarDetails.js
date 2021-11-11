@@ -8,7 +8,7 @@ const CarDetails = () => {
     const [carDetails, setCarDetails] = useState({});
     const {carId} = useParams();
     const {user} = useAuth();
-    // console.log(carDetails, user);
+    // console.log(carDetails);
     
     const {
       register,
@@ -19,7 +19,11 @@ const CarDetails = () => {
 
     const onSubmit = (data) => {
        data.email = user?.email;
-       console.log(data);
+       data.productName = carDetails?.name;
+       data.description = carDetails?.description;
+       data.price = carDetails?.price;
+       data.img = carDetails?.img;
+      //  console.log(data);
        fetch("http://localhost:5000/addOrders", {
           method: "POST",
           headers: {
@@ -31,7 +35,6 @@ const CarDetails = () => {
           .then((result) => {
             console.log(result);
           });
-
     };
 
     useEffect(() => {
@@ -50,44 +53,43 @@ const CarDetails = () => {
             <img style={{ width: "75%" }} src={carDetails?.img} alt="" />
             <h5 className="w-75">{carDetails?.name}</h5>
             <p className="w-75">{carDetails?.description}</p>
-            <p className="w-75">{carDetails?.price}</p>
+            <p className="w-75">${carDetails?.price}</p>
           </div>
 
           <div className="col-md-6">
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
-                {...register("name", { required: true })}
-                defaultValue={carDetails?.name}
-                placeholder="Name"
+                {...register("address", { required: true })}
+                defaultValue=""
+                placeholder="Your Address"
                 className="p-2 m-2 w-100"
               />
               <br />
               <input
-                {...register("description", { required: true })}
-                defaultValue={carDetails?.description}
-                placeholder="description"
+                {...register("phone", { required: true })}
+                defaultValue=""
+                placeholder="phone"
                 className="p-2 m-2"
                 className="p-2 m-2 w-100"
-
               />
               <br />
               <input
                 type="number"
-                {...register("price", { required: true })}
-                defaultValue={carDetails?.price}
-                placeholder="price$"
+                {...register("age", { required: true })}
+                defaultValue=""
+                placeholder="age"
                 className="p-2 m-2"
                 className="p-2 m-2 w-100"
               />
               <br />
 
-              <input
+              {/* <input
                 {...register("img", { required: true })}
-                defaultValue={carDetails?.img}
+                defaultValue=""
                 placeholder="Image url"
                 className="p-2 m-2"
                 className="p-2 m-2 w-100"
-              />
+              /> */}
               <br />
 
               {errors.exampleRequired && <span>This field is required</span>}

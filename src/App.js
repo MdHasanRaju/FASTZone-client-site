@@ -6,6 +6,9 @@ import Login from './pages/Login/Login/Login';
 import Register from './pages/Login/Register/Register';
 import AuthProvider from './Contexts/AuthProvider';
 import CarDetails from './pages/Home/CarDetails/CarDetails';
+import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
+import AddReview from './pages/Login/AddReview/AddReview';
+import MyOrders from './pages/Login/MyOrders/MyOrders';
 
 function App() {
   return (
@@ -19,9 +22,9 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/cars/:carId">
+            <PrivateRoute path="/cars/:carId">
               <CarDetails />
-            </Route>
+            </PrivateRoute>
             {/* <Route path="/explore">
               <Home />
             </Route> */}
@@ -30,6 +33,12 @@ function App() {
             </Route>
             <Route path="/register">
               <Register />
+            </Route>
+            <Route path="/addReview">
+              <AddReview />
+            </Route>
+            <Route path="/myOrders">
+              <MyOrders />
             </Route>
           </Switch>
         </Router>

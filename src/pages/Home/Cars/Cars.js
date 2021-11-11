@@ -7,10 +7,10 @@ const Cars = () => {
 
     useEffect(() => {
     fetch("http://localhost:5000/cars")
-    .then(res => res.json())
-    .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setCars(data.slice(0, 6));
-    })
+      });
     }, [])
 
     return (

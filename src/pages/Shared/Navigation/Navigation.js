@@ -48,6 +48,13 @@ const Navigation = () => {
                   </Link>
                 </li>
               )}
+              {user?.email && (
+                <li>
+                  <Link to="/payment" className="nav-item nav-link ">
+                    Payment
+                  </Link>
+                </li>
+              )}
             </ul>
             <div className="d-flex">
               {user?.email && <span className="my-auto me-2">{user.displayName}</span>}
