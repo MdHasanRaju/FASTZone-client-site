@@ -10,6 +10,7 @@ import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import AddReview from './pages/Login/AddReview/AddReview';
 import MyOrders from './pages/Login/MyOrders/MyOrders';
 import Dashboard from './pages/Login/Dashboard/Dashboard';
+import ExploreItems from './pages/Home/ExploreItems/ExploreItems';
 
 function App() {
   return (
@@ -26,9 +27,9 @@ function App() {
             <PrivateRoute path="/cars/:carId">
               <CarDetails />
             </PrivateRoute>
-            {/* <Route path="/explore">
-              <Home />
-            </Route> */}
+            <Route path="/explore">
+              <ExploreItems />
+            </Route>
             <Route path="/login">
               <Login />
             </Route>

@@ -46,8 +46,8 @@ const CarDetails = () => {
     }, [])
 
     return (
-      <div>
-        <h2>This is CarDetails : {carDetails?.name}</h2>
+      <div className="container">
+        <h2>YOUR CHOOSE ITEM : {carDetails?.name}</h2>
         <div className="container row">
           <div className="col-md-6 text-start">
             <img style={{ width: "75%" }} src={carDetails?.img} alt="" />

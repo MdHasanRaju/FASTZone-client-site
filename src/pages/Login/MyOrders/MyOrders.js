@@ -22,7 +22,7 @@ const MyOrders = () => {
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">User</th>
+              <th scope="col">UserAddress</th>
               <th scope="col">Email</th>
               <th scope="col">Package Name</th>
               <th scope="col">Price</th>
