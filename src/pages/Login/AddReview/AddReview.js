@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../Hooks/useAuth';
+import Rating from "react-rating";
+
 
 
 const AddReview = () => {
@@ -43,6 +45,13 @@ const AddReview = () => {
           name="comments"
           placeholder="Comments"
           {...register("comments", { required: true })}
+        />
+        <br />
+        <input
+          className="input-field"
+          type="number"
+          placeholder="Give a rating between 0 to 5"
+          {...register("stars", { min: 0, max: 5, required: true })}
         />
         <br />
 

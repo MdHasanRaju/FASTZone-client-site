@@ -9,8 +9,8 @@ import CarDetails from './pages/Home/CarDetails/CarDetails';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import AddReview from './pages/Login/AddReview/AddReview';
 import MyOrders from './pages/Login/MyOrders/MyOrders';
-import Dashboard from './pages/Login/Dashboard/Dashboard';
 import ExploreItems from './pages/Home/ExploreItems/ExploreItems';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -36,11 +36,11 @@ function App() {
             <Route path="/register">
               <Register />
             </Route>
-            <Route path="/dashboard">
-            <Dashboard></Dashboard>
-          </Route>
             <Route path="/addReview">
               <AddReview />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
             </Route>
             <Route path="/myOrders">
               <MyOrders />

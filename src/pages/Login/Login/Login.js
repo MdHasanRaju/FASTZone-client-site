@@ -1,10 +1,11 @@
+import { Alert, Button } from '@mui/material';
 import React, { useState } from 'react';
 import { NavLink, useLocation, useHistory } from "react-router-dom";
 import useAuth from '../../../Hooks/useAuth';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const { user, loginUser, isLoading, authError} = useAuth();
+    const { user, loginUser, isLoading, authError, signInWithGoogle} = useAuth();
 
     const history = useHistory();
     const location = useLocation();
@@ -20,9 +21,12 @@ const Login = () => {
      const handleLoginSubmit = (e) => {
        loginUser(loginData.email, loginData.password, location, history);
        console.log( loginData.email, loginData.password)
-
        e.preventDefault();
      };
+
+         const handleGoogleSignIn = () => {
+           signInWithGoogle(location, history);
+         };
 
     return (
       <div className="container my-5">
@@ -64,16 +68,16 @@ const Login = () => {
               <span class="visually-hidden">Loading...</span>
             </div>
           )}
-          {user?.email && (
-            <div class="alert alert-success" role="alert">
-              Login Successfully
-            </div>
-          )}
+          {user?.email && <Alert severity="success">Login Successfully</Alert>}
           {authError && (
             <div class="alert alert-danger" role="alert">
               {authError}
             </div>
           )}
+          <p>-----------------------------</p>
+          <Button onClick={handleGoogleSignIn} variant="contained">
+            Google Sign In
+          </Button>
         </form>
       </div>
     );

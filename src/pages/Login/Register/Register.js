@@ -78,9 +78,6 @@ const Register = () => {
             <span class="visually-hidden">Loading...</span>
           </div>
         )}
-        {user?.email && (
-          alert('Register successfully done')
-        )}
         {authError && (
           <div class="alert alert-danger" role="alert">
             {authError}
