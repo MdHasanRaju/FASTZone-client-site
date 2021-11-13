@@ -74,12 +74,12 @@ const Register = () => {
           Already Registered? Please Login
         </NavLink>
         {isLoading && (
-          <div class="spinner-border text-danger" role="status">
-            <span class="visually-hidden">Loading...</span>
+          <div className="spinner-border text-danger" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
         )}
         {authError && (
-          <div class="alert alert-danger" role="alert">
+          <div className="alert alert-danger" role="alert">
             {authError}
           </div>
         )}

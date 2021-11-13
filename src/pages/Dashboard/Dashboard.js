@@ -91,7 +91,7 @@ function Dashboard(props) {
       <Link to={`${url}/addProduct`}>
         <Button color="inherit">Add A Product</Button>
       </Link>
-      <List>
+      {/* <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
@@ -100,7 +100,7 @@ function Dashboard(props) {
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </div>
   );
 

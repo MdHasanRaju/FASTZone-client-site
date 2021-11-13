@@ -6,7 +6,7 @@ const Navigation = () => {
     const {user, logout} = useAuth();
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <div className="container-fluid">
           <span className="text-warning fw-bolder">FASTZone</span>
           <button
@@ -23,18 +23,24 @@ const Navigation = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li>
-                <Link to="/home" className="nav-item nav-link active">
+                <Link
+                  to="/home"
+                  className="nav-item nav-link active text-light"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/explore" className="nav-item nav-link">
+                <Link to="/explore" className="nav-item nav-link text-light">
                   Explore
                 </Link>
               </li>
               {user?.email && (
                 <li>
-                  <Link to="/dashboard" className="nav-item nav-link ">
+                  <Link
+                    to="/dashboard"
+                    className="nav-item nav-link text-light"
+                  >
                     Dashboard
                   </Link>
                 </li>
@@ -42,7 +48,9 @@ const Navigation = () => {
             </ul>
             <div className="d-flex">
               {user?.email && (
-                <span className="my-auto me-2">{user.displayName}</span>
+                <span className="my-auto me-2 text-light">
+                  {user.displayName}
+                </span>
               )}
               {user?.email ? (
                 <Link to="/home">

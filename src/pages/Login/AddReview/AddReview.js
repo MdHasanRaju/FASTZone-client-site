@@ -25,8 +25,8 @@ const AddReview = () => {
   };
   return (
     <div>
-      <h1>Review</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <h1 className="text-warning">Review</h1>
+      <form onSubmit={handleSubmit(onSubmit)} >
         <input
           className="input-field"
           name="customerName"
@@ -45,7 +45,7 @@ const AddReview = () => {
         <input
           className="input-field"
           name="comments"
-          placeholder="Your Comment"
+          placeholder="Type Your Comment"
           {...register("comments", { required: true })}
         />
         <br />
@@ -58,9 +58,9 @@ const AddReview = () => {
         <br />
 
         <input
-          className="submit-btn btn btn-danger mt-3"
+          className="submit-btn btn btn-danger mt-3 px-5"
           type="submit"
-          value="Register"
+          value="Send"
         />
       </form>
     </div>

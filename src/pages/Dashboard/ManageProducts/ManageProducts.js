@@ -1,48 +1,47 @@
 import React, { useEffect, useState } from "react";
 
 const ManageProducts = () => {
-    const [allProducts, setAllProducts] = useState([]);
-    const date = new Date().toLocaleDateString();
+  const [allProducts, setAllProducts] = useState([]);
+  const date = new Date().toLocaleDateString();
 
-    useEffect(() => {
-        fetch("https://protected-stream-32771.herokuapp.com/cars")
-          .then((res) => res.json())
-          .then((data) => {
-            setAllProducts(data);
-            console.log(data)
-          });
-    },[])
+  useEffect(() => {
+    fetch("https://protected-stream-32771.herokuapp.com/cars")
+      .then((res) => res.json())
+      .then((data) => {
+        setAllProducts(data);
+        console.log(data);
+      });
+  }, []);
 
-    // manage all products delete method for admin
-    const handleDelete = (id) => {
-        fetch(`https://protected-stream-32771.herokuapp.com/deletePd/${id}`, {
-          method: "DELETE",
-          headers: {
-            "content-type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            const proceed = window.confirm(
-              "Stop! are you sure you want to delete?"
+  // manage all products delete method for admin
+  const handleDelete = (id) => {
+    fetch(`https://protected-stream-32771.herokuapp.com/deletePd/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const proceed = window.confirm(
+          "Stop! are you sure you want to delete?"
+        );
+        if (proceed) {
+          if (data.deletedCount === 1) {
+            const remainingOrders = allProducts.filter(
+              (order) => order._id !== id
             );
-            if (proceed) {
-              if (data.deletedCount === 1) {
-                const remainingOrders = allProducts.filter(
-                  (order) => order._id !== id
-                );
-                setAllProducts(remainingOrders);
-              }
-            }
-          });
-    }
-
+            setAllProducts(remainingOrders);
+          }
+        }
+      });
+  };
 
   return (
     <div className="container">
       <h2>Manage All Products For Admin</h2>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">Id</th>
@@ -60,7 +59,9 @@ const ManageProducts = () => {
               <td>${product?.price}</td>
               <td>{date}</td>
               <td>
-                <button onClick={() => handleDelete(product._id)}>Delete</button>
+                <button onClick={() => handleDelete(product._id)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

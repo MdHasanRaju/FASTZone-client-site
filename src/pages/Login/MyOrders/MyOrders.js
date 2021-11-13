@@ -43,7 +43,7 @@ const MyOrders = () => {
   return (
     <div className="container">
       <h2>MY ORDER LIST</h2>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">User Address</th>

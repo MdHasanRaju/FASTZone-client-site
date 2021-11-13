@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="container">
           <div className="row ">
             <div className="col-lg-3">
-              <h5 className="text-start">ABOUT CARENA</h5>
+              <h5 className="text-start">ABOUT FASTZone</h5>
               <p className="text-start">
                 It is a long established fact that a reader will be distracted
                 by the readable.
@@ -21,19 +21,19 @@ const Footer = () => {
             </div>
             <div className="col-lg-3 text-start">
               <h5>TOP BRAND</h5>
-              <p>Alfa Romeo</p>
-              <p>lotus Evora</p>
-              <p>Ferrari</p>
-              <p>BMW Series</p>
-              <p>Mercedes</p>
+              <p><i className="fas fa-chevron-right"></i> Alfa Romeo</p>
+              <p><i className="fas fa-chevron-right"></i> lotus Evora</p>
+              <p><i className="fas fa-chevron-right"></i> Ferrari</p>
+              <p><i className="fas fa-chevron-right"></i> BMW Series</p>
+              <p><i className="fas fa-chevron-right"></i> Mercedes</p>
             </div>
             <div className="col-lg-3 text-start">
               <h5>CATEGORIES</h5>
-              <p>Crossovers</p>
-              <p>Hybrid SUVs</p>
-              <p>Sports Cars</p>
-              <p>Sports Cars</p>
-              <p>Hybrid Cars</p>
+              <p><i className="fas fa-chevron-right"></i> Crossovers</p>
+              <p><i className="fas fa-chevron-right"></i> Hybrid SUVs</p>
+              <p><i className="fas fa-chevron-right"></i> Sports Cars</p>
+              <p><i className="fas fa-chevron-right"></i> Sports Cars</p>
+              <p><i className="fas fa-chevron-right"></i> Hybrid Cars</p>
             </div>
             <div className="col-lg-3 text-start">
               <h5>Subscribe</h5>
