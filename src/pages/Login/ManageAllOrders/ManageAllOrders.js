@@ -1,76 +1,73 @@
 import React, { useEffect, useState } from "react";
 
 const ManageAllOrders = () => {
-    const [allOrders, setAllOrders] = useState([]);
-    const date = new Date().toLocaleDateString();
+  const [allOrders, setAllOrders] = useState([]);
+  const date = new Date().toLocaleDateString();
 
-    useEffect(() => {
-      fetch("http://localhost:5000/orders")
-        .then((res) => res.json())
-        .then((data) => {
-          setAllOrders(data);
-        });
-    }, []);
+  useEffect(() => {
+    fetch("https://protected-stream-32771.herokuapp.com/orders")
+      .then((res) => res.json())
+      .then((data) => {
+        setAllOrders(data);
+      });
+  }, []);
 
-    // Manage All Orders Delete Method
-    const handleDelete = (id) => {
-        fetch(`http://localhost:5000/deleteProduct/${id}`, {
-          method: "DELETE",
-          headers: {
-            "content-type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            const proceed = window.confirm(
-              "Stop! are you sure you want to delete?"
+  // Manage All Orders Delete Method
+  const handleDelete = (id) => {
+    fetch(`https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const proceed = window.confirm(
+          "Stop! are you sure you want to delete?"
+        );
+        if (proceed) {
+          if (data.deletedCount === 1) {
+            const remainingOrders = allOrders.filter(
+              (order) => order._id !== id
             );
-            if (proceed) {
-              if (data.deletedCount === 1) {
-                const remainingOrders = allOrders.filter(
-                  (order) => order._id !== id
-                );
-                setAllOrders(remainingOrders);
-              }
-            }
-          });
-    }
+            setAllOrders(remainingOrders);
+          }
+        }
+      });
+  };
 
-    return (
-      <div className="container">
-        <h2>Manage All Orders For Admin</h2>
-        <table class="table">
-          <thead>
+  return (
+    <div className="container">
+      <h2>Manage All Orders For Admin</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Email</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allOrders.map((order) => (
             <tr>
-              <th scope="col">User</th>
-              <th scope="col">Email</th>
-              <th scope="col">Item Name</th>
-              <th scope="col">Price</th>
-              <th scope="col">Date</th>
-              <th scope="col">Status</th>
+              <td>{order?.address}</td>
+              <td>{order?.email}</td>
+              <td>{order?.productName}</td>
+              <td>${order.price}</td>
+              <td>{date}</td>
+              <td>
+                <button onClick={() => handleDelete(order._id)}>Delete</button>
+                <button>Approve</button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {allOrders.map((order) => (
-              <tr>
-                <td>{order?.address}</td>
-                <td>{order?.email}</td>
-                <td>{order?.productName}</td>
-                <td>${order.price}</td>
-                <td>{date}</td>
-                <td>
-                  <button onClick={() => handleDelete(order._id)}>
-                    Delete
-                  </button>
-                  <button>Approve</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default ManageAllOrders;

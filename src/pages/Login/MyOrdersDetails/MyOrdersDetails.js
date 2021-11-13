@@ -7,7 +7,7 @@
 //   // ORDERED PRODUCT DELETE METHOD
 //   const handleDelete = (id) => {
 //     console.log(id);
-//     fetch(`http://localhost:5000/deleteProduct/${id}`, {
+//     fetch(`https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`, {
 //       method: "DELETE",
 //       headers: {
 //         "content-type": "application/json",

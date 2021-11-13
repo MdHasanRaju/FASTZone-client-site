@@ -1,30 +1,27 @@
-import React from 'react';
+import React from "react";
 import { useForm } from "react-hook-form";
-import useAuth from '../../../Hooks/useAuth';
+import useAuth from "../../../Hooks/useAuth";
 import Rating from "react-rating";
 
-
-
 const AddReview = () => {
- const { register, handleSubmit, watch, errors, reset } = useForm();
+  const { register, handleSubmit, watch, errors, reset } = useForm();
   const { user } = useAuth();
   // console.log(user)
 
   const onSubmit = (data) => {
     // console.log(data);
-    fetch("http://localhost:5000/addReview", {
+    fetch("https://protected-stream-32771.herokuapp.com/addReview", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((result) => {
-        if(result.insertedId){
-          alert('Thanks! For Your Comments')
+        if (result.insertedId) {
+          alert("Thanks! For Your Comments");
           reset();
         }
       });
-    
   };
   return (
     <div>
@@ -68,9 +65,6 @@ const AddReview = () => {
       </form>
     </div>
   );
-
-
 };
 
 export default AddReview;
-

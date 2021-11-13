@@ -1,110 +1,102 @@
-import React from 'react';
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router';
-import useAuth from '../../../Hooks/useAuth';
+import { useParams } from "react-router";
+import useAuth from "../../../Hooks/useAuth";
 
 const CarDetails = () => {
-    const [carDetails, setCarDetails] = useState({});
-    const {carId} = useParams();
-    const {user} = useAuth();
-    
-    const {
-      register,
-      handleSubmit,
-      watch,
-      formState: { errors },
-    } = useForm();
+  const [carDetails, setCarDetails] = useState({});
+  const { carId } = useParams();
+  const { user } = useAuth();
 
-    const onSubmit = (data) => {
-       data.email = user?.email;
-       data.productName = carDetails?.name;
-       data.description = carDetails?.description;
-       data.price = carDetails?.price;
-       data.img = carDetails?.img;
-      
-       fetch("http://localhost:5000/addOrders", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((res) => res.json())
-          .then((result) => {
-            if(result.insertedId){
-              alert('Congrats! Order Placed Successfully')
-            }
-          });
-    };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-    useEffect(() => {
-       fetch(`http://localhost:5000/singleCar/${carId}`)
-         .then((res) => res.json())
-         .then((data) => {
-           setCarDetails(data[0]);
-         });
-    }, [])
+  const onSubmit = (data) => {
+    data.email = user?.email;
+    data.productName = carDetails?.name;
+    data.description = carDetails?.description;
+    data.price = carDetails?.price;
+    data.img = carDetails?.img;
 
-    return (
-      <div className="container">
-        <h2>YOUR CHOOSE ITEM : {carDetails?.name}</h2>
-        <div className="container row">
-          <div className="col-md-6 text-start">
-            <img style={{ width: "75%" }} src={carDetails?.img} alt="" />
-            <h5 className="w-75">{carDetails?.name}</h5>
-            <p className="w-75">{carDetails?.description}</p>
-            <p className="w-75">${carDetails?.price}</p>
-          </div>
+    fetch("https://protected-stream-32771.herokuapp.com/addOrders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.insertedId) {
+          alert("Congrats! Order Placed Successfully");
+        }
+      });
+  };
 
-          <div className="col-md-6">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <input
-                {...register("address", { required: true })}
-                defaultValue=""
-                placeholder="Your Address"
-                className="p-2 m-2 w-100"
-              />
-              <br />
-              <input
-                {...register("phone", { required: true })}
-                defaultValue=""
-                placeholder="phone"
-                className="p-2 m-2"
-                className="p-2 m-2 w-100"
-              />
-              <br />
-              <input
-                type="number"
-                {...register("age", { required: true })}
-                defaultValue=""
-                placeholder="age"
-                className="p-2 m-2"
-                className="p-2 m-2 w-100"
-              />
-              <br />
+  useEffect(() => {
+    fetch(`https://protected-stream-32771.herokuapp.com/singleCar/${carId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCarDetails(data[0]);
+      });
+  }, []);
 
-              {/* <input
-                {...register("img", { required: true })}
-                defaultValue=""
-                placeholder="Image url"
-                className="p-2 m-2"
-                className="p-2 m-2 w-100"
-              /> */}
-              <br />
+  return (
+    <div className="container">
+      <h2>You have choose: {carDetails?.name}</h2>
+      <div className="container row">
+        <div className="col-md-6 text-start">
+          <img style={{ width: "75%" }} src={carDetails?.img} alt="" />
+          <h5 className="w-75">{carDetails?.name}</h5>
+          <p className="w-75">{carDetails?.description}</p>
+          <p className="w-75">${carDetails?.price}</p>
+        </div>
 
-              {errors.exampleRequired && <span>This field is required</span>}
+        <div className="col-md-6">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              {...register("address", { required: true })}
+              defaultValue=""
+              placeholder="Your Address"
+              className="p-2 m-2 w-100"
+            />
+            <br />
+            <input
+              {...register("phone", { required: true })}
+              defaultValue=""
+              placeholder="phone"
+              className="p-2 m-2"
+              className="p-2 m-2 w-100"
+            />
+            <br />
+            <input
+              type="number"
+              {...register("age", { required: true })}
+              defaultValue=""
+              placeholder="age"
+              className="p-2 m-2"
+              className="p-2 m-2 w-100"
+            />
+            <br />
+            <br />
 
-              <input
-                type="submit"
-                value="Order Now"
-                className="btn btn-success ms-2 w-50"
-              />
-            </form>
-          </div>
+            {errors.exampleRequired && <span>This field is required</span>}
+
+            <input
+              type="submit"
+              value="Order Now"
+              className="btn btn-success ms-2 w-75"
+            />
+          </form>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default CarDetails;

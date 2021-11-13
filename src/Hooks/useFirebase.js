@@ -33,7 +33,7 @@ const useFirebase = () => {
         const newUser = { email, displayName: name };
         setUser(newUser);
         // save user to the database
-        
+
         saveUser(email, name, "POST");
         // send name to firebase after creation
         updateProfile(auth.currentUser, {
@@ -41,7 +41,7 @@ const useFirebase = () => {
         })
           .then(() => {})
           .catch((error) => {});
-          console.log(newUser)
+        console.log(newUser);
         history.replace("/");
       })
       .catch((error) => {
@@ -82,44 +82,44 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
-    useEffect(() => {
-      const unsubscribed = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setUser(user);
-        } else {
-          setUser({});
-        }
-        setIsLoading(false);
-      });
-      return () => unsubscribed;
-    }, [auth]);
+  useEffect(() => {
+    const unsubscribed = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser({});
+      }
+      setIsLoading(false);
+    });
+    return () => unsubscribed;
+  }, [auth]);
 
-    const logout = () => {
-      setIsLoading(true);
-      signOut(auth)
-        .then(() => {
-          // Sign-out successful.
-        })
-        .catch((error) => {
-          // An error happened.
-        })
-        .finally(() => setIsLoading(false));
-    };
-
-    const saveUser = (email, displayName, method) => {
-      const user = { email, displayName };
-      fetch("http://localhost:5000/users", {
-        method: method,
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(user),
+  const logout = () => {
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
       })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        });
-    };
+      .catch((error) => {
+        // An error happened.
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch("https://protected-stream-32771.herokuapp.com/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   return {
     user,
