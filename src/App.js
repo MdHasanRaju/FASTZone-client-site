@@ -13,6 +13,7 @@ import ExploreItems from './pages/Home/ExploreItems/ExploreItems';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ManageAllOrders from './pages/Login/ManageAllOrders/ManageAllOrders';
 import Payment from './pages/Dashboard/Payment/Payment';
+import NotFound from './pages/Home/NotFound/NotFound';
 
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
             </Route>
             <Route path="/dashboard">
               <Dashboard />
+            </Route>
+            <Route path="*">
+              <NotFound/>
             </Route>
           </Switch>
         </Router>

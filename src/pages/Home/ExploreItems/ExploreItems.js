@@ -15,9 +15,7 @@ const ExploreItems = () => {
 
   return (
     <div className="mt-5">
-      <h1 className="fw-bolder" style={{ color: "red" }}>
-        Total Cars: {cars.length}
-      </h1>
+      <h1 className="fw-bolder text-primary">MORE CARS COLLECTION</h1>
       {!cars?.length ? (
         <div className="spinner-border text-danger" role="status">
           <span className="visually-hidden">Loading...</span>

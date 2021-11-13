@@ -35,13 +35,30 @@ import AddReview from "../Login/AddReview/AddReview";
 import Payment from "./Payment/Payment";
 import ManageProducts from "./ManageProducts/ManageProducts";
 
-
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const {user} = useAuth();
+  const { user } = useAuth();
+
+  const [isAdmin, setIsAdmin] = React.useState(false);
+
+  React.useEffect(() => {
+    fetch(
+      `https://protected-stream-32771.herokuapp.com/checkAdmin/${user?.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data[0]?.role === "admin") {
+          setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
+        }
+      });
+  }, [user?.email]);
+
+  //  console.log(isAdmin);
 
   let { path, url } = useRouteMatch();
 
@@ -58,39 +75,49 @@ function Dashboard(props) {
         <Button color="inherit">Dashboard</Button>
       </Link>
       <br />
-      {user?.email && (
+
+      {isAdmin && (
+        <Link to={`${url}/makeAdmin`}>
+          <Button color="inherit">Make Admin</Button>
+        </Link>
+      )}
+      <br />
+      {isAdmin && (
+        <Link to={`${url}/manageAllOrders`}>
+          <Button color="inherit">Manage All Orders</Button>
+        </Link>
+      )}
+      <br />
+      {isAdmin && (
+        <Link to={`${url}/manageProducts`}>
+          <Button color="inherit">Manage Products</Button>
+        </Link>
+      )}
+      <br />
+      {isAdmin && (
+        <Link to={`${url}/addProduct`}>
+          <Button color="inherit">Add A Product</Button>
+        </Link>
+      )}
+      <br />
+      {!isAdmin && (
         <Link to={`${url}/myOrders`}>
           <Button color="inherit">My Orders</Button>
         </Link>
       )}
       <br />
-      {user?.email && (
+      {!isAdmin && (
         <Link to={`${url}/payment`}>
           <Button color="inherit">Payment</Button>
         </Link>
       )}
       <br />
-      {user?.email && (
+      {!isAdmin && (
         <Link to={`${url}/addReview`}>
           <Button color="inherit">Add Review</Button>
         </Link>
       )}
       <br />
-      <Link to={`${url}/makeAdmin`}>
-        <Button color="inherit">Make Admin</Button>
-      </Link>
-      <br />
-      <Link to={`${url}/manageAllOrders`}>
-        <Button color="inherit">Manage All Orders</Button>
-      </Link>
-      <br />
-      <Link to={`${url}/manageProducts`}>
-        <Button color="inherit">Manage Products</Button>
-      </Link>
-      <br />
-      <Link to={`${url}/addProduct`}>
-        <Button color="inherit">Add A Product</Button>
-      </Link>
       {/* <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>

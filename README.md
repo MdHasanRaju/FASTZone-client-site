@@ -1,4 +1,4 @@
-## FASTZone WITH GRAND COLLECTION
+## THE ALL-NEW STYLISH AND MODERN
 
 Click here to visit live Site: https://assignment-12-76cbb.web.app/
 

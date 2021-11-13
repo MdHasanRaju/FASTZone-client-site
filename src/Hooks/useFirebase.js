@@ -8,7 +8,6 @@ import {
   signInWithPopup,
   onAuthStateChanged,
   updateProfile,
-  getIdToken,
   signOut,
 } from "firebase/auth";
 
@@ -34,7 +33,7 @@ const useFirebase = () => {
         setUser(newUser);
         // save user to the database
 
-        saveUser(email, name, "POST");
+        saveUser(email, name);
         // send name to firebase after creation
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -71,9 +70,9 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        saveUser(user.email, user.displayName, "PUT");
+        saveUser(user.email, user.displayName);
         setAuthError("");
-        const destination = location?.state?.from || "/";
+        const destination = location?.state?.from || "/dashboard";
         history.replace(destination);
       })
       .catch((error) => {
@@ -106,10 +105,10 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const saveUser = (email, displayName, method) => {
+  const saveUser = (email, displayName) => {
     const user = { email, displayName };
     fetch("https://protected-stream-32771.herokuapp.com/users", {
-      method: method,
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },

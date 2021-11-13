@@ -1,52 +1,45 @@
 import React, { useState } from "react";
 import { TextField, Button, Alert } from "@mui/material";
+import { useForm } from "react-hook-form";
 
 const MakeAdmin = () => {
-  const [email, setEmail] = useState("");
-  const [success, setSuccess] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
 
-  const handleOnBlur = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleAdminSubmit = (e) => {
-    const user = { email };
-    console.log(user);
-    fetch("https://protected-stream-32771.herokuapp.com/users/admin", {
+  const onSubmit = (data) => {
+    fetch("https://protected-stream-32771.herokuapp.com/makeAdmin", {
       method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        //   if (setSuccess) {
-        //     setSuccess(true);
-        //     setEmail("");
-        //   }
+      .then((result) => {
+        if(result?.[0].role === "admin") {
+          alert('Admin created Successfully')
+          reset();
+        }
       });
-    e.preventDefault();
+    
   };
 
   return (
-    <div>
-      <h2>Make An Admin</h2>
-      <form onSubmit={handleAdminSubmit}>
-        <TextField
-          sx={{ width: "50%" }}
+    <>
+      <form className="text-center my-3" onSubmit={handleSubmit(onSubmit)}>
+        <input
+          style={{ minWidth: "200px"}}
+          className="input-field"
+          name="email"
+          placeholder="Email"
           type="email"
-          label="Email"
-          onBlur={handleOnBlur}
-          variant="standard"
+          {...register("email", { required: true })}
         />
-        <Button variant="contained" type="submit">
-          Make Admin
-        </Button>
+        <br />
+        <input
+          className="btn btn-primary mt-2"
+          type="submit"
+          value="make Admin"
+        />
       </form>
-      {success && <Alert severity="success">Made Admin Successfully</Alert>}
-    </div>
+    </>
   );
 };
 
