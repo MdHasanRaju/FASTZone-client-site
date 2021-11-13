@@ -38,7 +38,7 @@ const ManageAllOrders = () => {
 
     return (
       <div className="container">
-        <h2>This Manage Orders</h2>
+        <h2>Manage All Orders For Admin</h2>
         <table class="table">
           <thead>
             <tr>

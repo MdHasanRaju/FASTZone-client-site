@@ -30,12 +30,18 @@ import DashboardHome from "./DashboardHome/DashboardHome";
 import MakeAdmin from "./MakeAdmin/MakeAdmin";
 import AddProduct from "./AddProduct/AddProduct";
 import ManageAllOrders from "../Login/ManageAllOrders/ManageAllOrders";
+import useAuth from "../../Hooks/useAuth";
+import AddReview from "../Login/AddReview/AddReview";
+import Payment from "./Payment/Payment";
+import ManageProducts from "./ManageProducts/ManageProducts";
+
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const {user} = useAuth();
 
   let { path, url } = useRouteMatch();
 
@@ -52,12 +58,34 @@ function Dashboard(props) {
         <Button color="inherit">Dashboard</Button>
       </Link>
       <br />
+      {user?.email && (
+        <Link to={`${url}/myOrders`}>
+          <Button color="inherit">My Orders</Button>
+        </Link>
+      )}
+      <br />
+      {user?.email && (
+        <Link to={`${url}/payment`}>
+          <Button color="inherit">Payment</Button>
+        </Link>
+      )}
+      <br />
+      {user?.email && (
+        <Link to={`${url}/addReview`}>
+          <Button color="inherit">Add Review</Button>
+        </Link>
+      )}
+      <br />
       <Link to={`${url}/makeAdmin`}>
         <Button color="inherit">Make Admin</Button>
       </Link>
       <br />
       <Link to={`${url}/manageAllOrders`}>
         <Button color="inherit">Manage All Orders</Button>
+      </Link>
+      <br />
+      <Link to={`${url}/manageProducts`}>
+        <Button color="inherit">Manage Products</Button>
       </Link>
       <br />
       <Link to={`${url}/addProduct`}>
@@ -155,6 +183,16 @@ function Dashboard(props) {
           <Route exact path={path}>
             <DashboardHome></DashboardHome>
           </Route>
+
+          <Route path={`${path}/myOrders`}>
+            <MyOrders></MyOrders>
+          </Route>
+          <Route path={`${path}/payment`}>
+            <Payment></Payment>
+          </Route>
+          <Route path={`${path}/addReview`}>
+            <AddReview></AddReview>
+          </Route>
           <Route path={`${path}/makeAdmin`}>
             <MakeAdmin></MakeAdmin>
           </Route>
@@ -163,6 +201,9 @@ function Dashboard(props) {
           </Route>
           <Route path={`${path}/manageAllOrders`}>
             <ManageAllOrders></ManageAllOrders>
+          </Route>
+          <Route path={`${path}/manageProducts`}>
+            <ManageProducts></ManageProducts>
           </Route>
         </Switch>
       </Box>

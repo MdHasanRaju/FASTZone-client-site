@@ -8,9 +8,7 @@ const Navigation = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            FAST-WORLD
-          </a>
+          <span className="text-warning fw-bolder">FASTZone</span>
           <button
             className="navbar-toggler"
             type="button"
@@ -36,27 +34,6 @@ const Navigation = () => {
               </li>
               {user?.email && (
                 <li>
-                  <Link to="/myOrders" className="nav-item nav-link ">
-                    My Orders
-                  </Link>
-                </li>
-              )}
-              {user?.email && (
-                <li>
-                  <Link to="/addReview" className="nav-item nav-link ">
-                    Add Review
-                  </Link>
-                </li>
-              )}
-              {user?.email && (
-                <li>
-                  <Link to="/payment" className="nav-item nav-link ">
-                    
-                  </Link>
-                </li>
-              )}
-              {user?.email && (
-                <li>
                   <Link to="/dashboard" className="nav-item nav-link ">
                     Dashboard
                   </Link>
@@ -64,12 +41,14 @@ const Navigation = () => {
               )}
             </ul>
             <div className="d-flex">
-              {user?.email && <span className="my-auto me-2">{user.displayName}</span>}
+              {user?.email && (
+                <span className="my-auto me-2">{user.displayName}</span>
+              )}
               {user?.email ? (
                 <Link to="/home">
                   <button
                     onClick={logout}
-                    className="btn btn-outline-success"
+                    className="btn btn-outline-danger"
                     type="submit"
                   >
                     Log Out

@@ -39,24 +39,9 @@ function App() {
             <Route path="/register">
               <Register />
             </Route>
-            <Route path="/addReview">
-              <AddReview />
-            </Route>
-            <Route path="/payment">
-              <Payment />
-            </Route>
             <Route path="/dashboard">
               <Dashboard />
             </Route>
-            <Route path="/myOrders">
-              <MyOrders />
-            </Route>
-            <Route path="/manageAllOrders">
-              <ManageAllOrders></ManageAllOrders>
-            </Route>
-            {/* <Route path="/addProduct">
-              <AddProduct></AddProduct>
-            </Route> */}
           </Switch>
         </Router>
       </AuthProvider>

@@ -13,7 +13,6 @@ const AddProduct = () => {
 
     const onSubmit = (data) => {
       data.email = user?.email;
-      console.log(data);
       fetch("http://localhost:5000/addProduct", {
         method: "POST",
         headers: {
@@ -23,14 +22,16 @@ const AddProduct = () => {
       })
         .then((res) => res.json())
         .then((result) => {
-          console.log(result);
+          if(result.insertedId) {
+            alert('Product Added Successfully');
+          }
         });
     };
 
     return (
       <div className="my-5">
         <h1 className="my-2 text-center text-warning">
-          Please Add A New Product
+          Add A New Product
         </h1>
         <div className="d-flex justify-content-center align-items-center">
           <div className="border border-2 p-4 ">
@@ -38,7 +39,7 @@ const AddProduct = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input
                   {...register("name")}
-                  placeholder="title"
+                  placeholder="Product Name"
                   className="p-2 m-2 w-100"
                   required
                 />
@@ -52,17 +53,9 @@ const AddProduct = () => {
                 />
                 <br />
                 <input
-                  {...register("key")}
-                  placeholder="key"
-                  className="p-2 m-2"
-                  className="p-2 m-2 w-100"
-                  required
-                />
-                <br />
-                <input
                   type="number"
                   {...register("price")}
-                  placeholder="cost$"
+                  placeholder="Price$"
                   className="p-2 m-2"
                   className="p-2 m-2 w-100"
                   required

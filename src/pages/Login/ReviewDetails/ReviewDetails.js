@@ -10,7 +10,7 @@ const ReviewDetails = ({review}) => {
           <div className="card p-4">
             <img style={{ width: "100%" }} src="" alt="" />
             <div className="card-body text-start">
-              <h3>{email}</h3>
+              <h5>{email}</h5>
               <p className="card-text">{comments}</p>
               <h5 className="card-title">{customerName}</h5>
               <Rating
