@@ -1,11 +1,74 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
 const ManageProducts = () => {
-    return (
-        <div>
-            <h2>MANAGE ALL PRODUCTS CAN BE CONTROLLED OVER HERE</h2>
-        </div>
-    );
+    const [allProducts, setAllProducts] = useState([]);
+    const date = new Date().toLocaleDateString();
+
+    useEffect(() => {
+        fetch("https://protected-stream-32771.herokuapp.com/cars")
+          .then((res) => res.json())
+          .then((data) => {
+            setAllProducts(data);
+            console.log(data)
+          });
+    },[])
+
+    // manage all products delete method for admin
+    const handleDelete = (id) => {
+        fetch(`https://protected-stream-32771.herokuapp.com/deletePd/${id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            const proceed = window.confirm(
+              "Stop! are you sure you want to delete?"
+            );
+            if (proceed) {
+              if (data.deletedCount === 1) {
+                const remainingOrders = allProducts.filter(
+                  (order) => order._id !== id
+                );
+                setAllProducts(remainingOrders);
+              }
+            }
+          });
+    }
+
+
+  return (
+    <div className="container">
+      <h2>Manage All Products For Admin</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">ProductName</th>
+            <th scope="col">Price</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allProducts.map((product) => (
+            <tr>
+              <td>{product?._id}</td>
+              <td>{product?.name}</td>
+              <td>${product?.price}</td>
+              <td>{date}</td>
+              <td>
+                <button onClick={() => handleDelete(product._id)}>Delete</button>
+                <button>Approve</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default ManageProducts;
