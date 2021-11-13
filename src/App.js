@@ -11,6 +11,9 @@ import AddReview from './pages/Login/AddReview/AddReview';
 import MyOrders from './pages/Login/MyOrders/MyOrders';
 import ExploreItems from './pages/Home/ExploreItems/ExploreItems';
 import Dashboard from './pages/Dashboard/Dashboard';
+import ManageAllOrders from './pages/Login/ManageAllOrders/ManageAllOrders';
+import Payment from './pages/Dashboard/Payment/Payment';
+// import AddProduct from './pages/Dashboard/AddProduct/AddProduct';
 
 function App() {
   return (
@@ -39,12 +42,21 @@ function App() {
             <Route path="/addReview">
               <AddReview />
             </Route>
+            <Route path="/payment">
+              <Payment />
+            </Route>
             <Route path="/dashboard">
               <Dashboard />
             </Route>
             <Route path="/myOrders">
               <MyOrders />
             </Route>
+            <Route path="/manageAllOrders">
+              <ManageAllOrders></ManageAllOrders>
+            </Route>
+            {/* <Route path="/addProduct">
+              <AddProduct></AddProduct>
+            </Route> */}
           </Switch>
         </Router>
       </AuthProvider>

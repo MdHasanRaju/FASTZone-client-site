@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 
 const ExploreItem = ({car}) => {
     const { _id, img, name, price, description } = car;
-    console.log(car)
 
     return (
       <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="card-group mt-3">
           <div className="card p-4">
-            <img style={{ width: "100%" }} src={img} alt="" />
+            <img style={{ width: "100%" , height:"350px"}} src={img} alt="" />
             <div className="card-body text-start">
               <h3>{name}</h3>
               <p className="card-text">{description?.slice(0, 130)}..</p>

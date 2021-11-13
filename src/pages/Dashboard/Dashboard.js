@@ -29,6 +29,7 @@ import {
 import DashboardHome from "./DashboardHome/DashboardHome";
 import MakeAdmin from "./MakeAdmin/MakeAdmin";
 import AddProduct from "./AddProduct/AddProduct";
+import ManageAllOrders from "../Login/ManageAllOrders/ManageAllOrders";
 
 const drawerWidth = 240;
 
@@ -53,6 +54,10 @@ function Dashboard(props) {
       <br />
       <Link to={`${url}/makeAdmin`}>
         <Button color="inherit">Make Admin</Button>
+      </Link>
+      <br />
+      <Link to={`${url}/manageAllOrders`}>
+        <Button color="inherit">Manage All Orders</Button>
       </Link>
       <br />
       <Link to={`${url}/addProduct`}>
@@ -155,6 +160,9 @@ function Dashboard(props) {
           </Route>
           <Route path={`${path}/addProduct`}>
             <AddProduct></AddProduct>
+          </Route>
+          <Route path={`${path}/manageAllOrders`}>
+            <ManageAllOrders></ManageAllOrders>
           </Route>
         </Switch>
       </Box>

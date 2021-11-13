@@ -51,7 +51,7 @@ const Navigation = () => {
               {user?.email && (
                 <li>
                   <Link to="/payment" className="nav-item nav-link ">
-                    Payment
+                    
                   </Link>
                 </li>
               )}

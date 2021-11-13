@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
-import MyOrdersDetails from "../MyOrdersDetails/MyOrdersDetails";
 
 const MyOrders = () => {
   const { user } = useAuth();
   const [myOrders, setMyOrders] = useState([]);
+  const date = new Date().toLocaleDateString();
 
   useEffect(() => {
     fetch(`http://localhost:5000/myOrders/${user?.email}`)
@@ -13,8 +13,7 @@ const MyOrders = () => {
         setMyOrders(data);
       });
   }, [user?.email]);
-
-  const date = new Date().toLocaleDateString();
+  
 
   // ORDERED PRODUCT DELETE METHOD
   const handleDelete = (id) => {
@@ -26,18 +25,6 @@ const MyOrders = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // const proceed = window.confirm(
-        //   "Stop! are you sure you want ot delete?"
-        // );
-        // if (proceed) {
-        //   if (data.deletedCount > 0) {
-        //     alert("data deleted successfully");
-        //     console.log(data);
-        //     window.location.reload();
-        //   } else {
-        //   }
-        // }
-        
         const proceed = window.confirm(
           "Stop! are you sure you want to delete?"
         );
@@ -54,13 +41,13 @@ const MyOrders = () => {
 
   return (
     <div className="container">
-      <h2>My Orders List</h2>
+      <h2>MY ORDER LIST</h2>
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">UserAddress</th>
+            <th scope="col">User Address</th>
             <th scope="col">Email</th>
-            <th scope="col">Package Name</th>
+            <th scope="col">Item Name</th>
             <th scope="col">Price</th>
             <th scope="col">Date</th>
             <th scope="col">Status</th>
@@ -88,4 +75,3 @@ const MyOrders = () => {
 
 export default MyOrders;
 
-// <MyOrdersDetails key={order._id} myOrders={order}></MyOrdersDetails>;

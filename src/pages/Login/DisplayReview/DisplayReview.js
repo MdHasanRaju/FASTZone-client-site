@@ -19,7 +19,7 @@ const DisplayReview = () => {
     return (
       <div className="mt-5">
         <h1 className="fw-bolder" style={{ color: "red" }}>
-          Total Cars: {reviews.length}
+          People Reviewed: {reviews.length}
         </h1>
         {!reviews?.length ? (
           <div class="spinner-border text-danger" role="status">

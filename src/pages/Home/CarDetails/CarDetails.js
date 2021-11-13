@@ -8,7 +8,6 @@ const CarDetails = () => {
     const [carDetails, setCarDetails] = useState({});
     const {carId} = useParams();
     const {user} = useAuth();
-    // console.log(carDetails);
     
     const {
       register,
@@ -23,7 +22,7 @@ const CarDetails = () => {
        data.description = carDetails?.description;
        data.price = carDetails?.price;
        data.img = carDetails?.img;
-      //  console.log(data);
+      
        fetch("http://localhost:5000/addOrders", {
           method: "POST",
           headers: {
@@ -33,7 +32,9 @@ const CarDetails = () => {
         })
           .then((res) => res.json())
           .then((result) => {
-            console.log(result);
+            if(result.insertedId){
+              alert('Congrats! Order Placed Successfully')
+            }
           });
     };
 

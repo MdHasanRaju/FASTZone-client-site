@@ -3,7 +3,6 @@ import Rating from "react-rating";
 
 const ReviewDetails = ({review}) => {
     const {stars, comments, email, customerName} = review;
-    console.log(review)
 
     return (
       <div className="col-lg-4 col-md-6 col-sm-12">
