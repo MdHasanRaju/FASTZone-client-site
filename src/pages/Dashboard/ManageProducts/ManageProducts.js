@@ -49,7 +49,7 @@ const ManageProducts = () => {
             <th scope="col">ProductName</th>
             <th scope="col">Price</th>
             <th scope="col">Date</th>
-            <th scope="col">Status</th>
+            <th scope="col">Option</th>
           </tr>
         </thead>
         <tbody>
@@ -61,7 +61,6 @@ const ManageProducts = () => {
               <td>{date}</td>
               <td>
                 <button onClick={() => handleDelete(product._id)}>Delete</button>
-                <button>Approve</button>
               </td>
             </tr>
           ))}
