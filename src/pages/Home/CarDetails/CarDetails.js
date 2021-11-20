@@ -22,6 +22,8 @@ const CarDetails = () => {
     data.description = carDetails?.description;
     data.price = carDetails?.price;
     data.img = carDetails?.img;
+    data.status = 'Pending';
+    // console.log(data);
 
     fetch("https://protected-stream-32771.herokuapp.com/addOrders", {
       method: "POST",

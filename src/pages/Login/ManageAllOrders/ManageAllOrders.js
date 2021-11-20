@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const ManageAllOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
   const date = new Date().toLocaleDateString();
+  const [statusId, setStatusId] = useState('')
+
+  // Status form
+  const { register, handleSubmit } = useForm();
+
 
   useEffect(() => {
     fetch("https://protected-stream-32771.herokuapp.com/orders")
@@ -11,6 +17,30 @@ const ManageAllOrders = () => {
         setAllOrders(data);
       });
   }, []);
+
+  // Status Display
+  const handleOrderId = (id) => {
+    setStatusId(id)
+    
+  }
+
+  const onSubmit = (data) => {
+    fetch(
+      `https://protected-stream-32771.herokuapp.com/statusUpdate/${statusId}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("status data", data);
+      });
+    
+  };
 
   // Manage All Orders Delete Method
   const handleDelete = (id) => {
@@ -42,12 +72,12 @@ const ManageAllOrders = () => {
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">User</th>
+            <th scope="col">Address</th>
             <th scope="col">Email</th>
             <th scope="col">Item Name</th>
             <th scope="col">Price</th>
-            <th scope="col">Date</th>
             <th scope="col">Status</th>
+            <th scope="col">Option</th>
           </tr>
         </thead>
         <tbody>
@@ -57,10 +87,19 @@ const ManageAllOrders = () => {
               <td>{order?.email}</td>
               <td>{order?.productName}</td>
               <td>${order.price}</td>
-              <td>{date}</td>
+              {/* <td>{date}</td> */}
+              <td>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <select onClick={() => handleOrderId(order?._id)} {...register("status")}>
+                    <option value={order?.status}>{order?.status}</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Done">Done</option>
+                  </select>
+                  <input type="submit" value="Update"/>
+                </form>
+              </td>
               <td>
                 <button onClick={() => handleDelete(order._id)}>Delete</button>
-                <button>Approve</button>
               </td>
             </tr>
           ))}

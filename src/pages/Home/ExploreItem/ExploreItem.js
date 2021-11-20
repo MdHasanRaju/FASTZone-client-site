@@ -1,4 +1,5 @@
 import React from 'react';
+import Fade from "react-reveal/Fade";
 import { Link } from 'react-router-dom';
 
 const ExploreItem = ({car}) => {
@@ -6,6 +7,8 @@ const ExploreItem = ({car}) => {
 
     return (
       <div className="col-lg-4 col-md-6 col-sm-12">
+              <Fade left>
+
         <div className="card-group mt-3">
           <div className="card p-4">
             <img style={{ width: "100%" , height:"350px"}} src={img} alt="" />
@@ -19,6 +22,7 @@ const ExploreItem = ({car}) => {
             </div>
           </div>
         </div>
+        </Fade>
       </div>
     );
 };

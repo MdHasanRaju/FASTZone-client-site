@@ -13,6 +13,7 @@ const MyOrders = () => {
       .then((res) => res.json())
       .then((data) => {
         setMyOrders(data);
+        console.log(data);
       });
   }, [user?.email]);
 
@@ -50,8 +51,8 @@ const MyOrders = () => {
             <th scope="col">Email</th>
             <th scope="col">Item Name</th>
             <th scope="col">Price</th>
-            <th scope="col">Date</th>
             <th scope="col">Status</th>
+            <th scope="col">Option</th>
           </tr>
         </thead>
         <tbody>
@@ -61,10 +62,9 @@ const MyOrders = () => {
               <td>{order?.email}</td>
               <td>{order?.productName}</td>
               <td>${order.price}</td>
-              <td>{date}</td>
+              <td className="text-success fw-bolder">{order?.status}</td>
               <td>
                 <button onClick={() => handleDelete(order._id)}>Delete</button>
-                <button>Approve</button>
               </td>
             </tr>
           ))}
