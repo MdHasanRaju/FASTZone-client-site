@@ -18,7 +18,7 @@ const DisplayReview = () => {
     <div className="mt-5">
       <h1 className="fw-bolder text-info">REVIEWS</h1>
       {!reviews?.length ? (
-        <div className="spinner-border text-danger" role="status">
+        <div className="spinner-border text-info" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
