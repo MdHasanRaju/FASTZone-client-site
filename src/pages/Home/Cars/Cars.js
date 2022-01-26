@@ -15,7 +15,7 @@ const Cars = () => {
 
   return (
     <div className="mt-5">
-      <h1 className="fw-bolder text-primary">
+      <h1 className="fw-bolder text-info">
         CARS COLLECTION
       </h1>
       {!cars?.length ? (

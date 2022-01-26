@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ExploreItem from "../ExploreItem/ExploreItem";
+
 
 const ExploreItems = () => {
   const [cars, setCars] = useState([]);
@@ -15,9 +17,10 @@ const ExploreItems = () => {
 
   return (
     <div className="mt-5">
-      <h1 className="fw-bolder text-primary">MORE CARS COLLECTION</h1>
+      <div className="text-start text-bolder  ms-3"><Link className="text-info"  to="/home">GO BACK</Link><i className="fas fa-arrow-left text-info"></i></div>
+      <h1 className="fw-bolder text-info">MORE CARS COLLECTION</h1>
       {!cars?.length ? (
-        <div className="spinner-border text-danger" role="status">
+        <div className="spinner-border text-info" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (

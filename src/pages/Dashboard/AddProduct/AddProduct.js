@@ -30,7 +30,7 @@ const AddProduct = () => {
 
   return (
     <div className="my-5">
-      <h1 className="my-2 text-center text-danger">Add A New Product</h1>
+      <h1 className="my-2 text-center text-primary">Add A New Product</h1>
       <div className="d-flex justify-content-center align-items-center">
         <div className="border border-2 p-4 ">
           <div className="login-form">
@@ -74,7 +74,7 @@ const AddProduct = () => {
               <input
                 type="submit"
                 value="Add"
-                className="btn btn-success ms-2 w-50"
+                className="btn btn-primary text-light ms-2 w-50"
               />
             </form>
           </div>

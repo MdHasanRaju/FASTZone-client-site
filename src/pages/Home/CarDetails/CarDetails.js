@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const CarDetails = () => {
   const [carDetails, setCarDetails] = useState({});
@@ -49,17 +50,18 @@ const CarDetails = () => {
   }, []);
 
   return (
-    <div className="container">
-      <h2>You have choose: {carDetails?.name}</h2>
+    <div className="container my-5 ">
+      <div className="text-start "><Link className="text-info" to="/home"><i class="fas fa-arrow-circle-left fw-bolder fs-4 ms-4"></i></Link> </div>
+      <h2 className="text-info mb-4">You have chosen: {carDetails?.name}</h2>
       <div className="container row">
-        <div className="col-md-6 text-start">
-          <img style={{ width: "75%" }} src={carDetails?.img} alt="" />
-          <h5 className="w-75">{carDetails?.name}</h5>
-          <p className="w-75">{carDetails?.description}</p>
-          <p className="w-75">${carDetails?.price}</p>
+        <div className="col-md-7 text-start">
+          <img style={{ width: "100%" }} src={carDetails?.img} alt="" />
+          <h5 className="w-100 mt-2 text-info">{carDetails?.name}</h5>
+          <p style={{textAlign:"justify"}} className="w-100 ">{carDetails?.description}</p>
+          <p className="w-100 fw-bolder text-info">${carDetails?.price}</p>
         </div>
 
-        <div className="col-md-6">
+        <div className="col-md-5">
           <form onSubmit={handleSubmit(onSubmit)}>
             <input
               {...register("address", { required: true })}
@@ -92,7 +94,7 @@ const CarDetails = () => {
             <input
               type="submit"
               value="Order Now"
-              className="btn btn-success ms-2 w-75"
+              className="btn btn-info text-light ms-2 w-75"
             />
           </form>
         </div>

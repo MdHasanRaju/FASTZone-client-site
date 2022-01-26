@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import  './Navigation.css';
+
 
 const Navigation = () => {
     const {user, logout} = useAuth();
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-        <div className="container-fluid">
-          <span className="text-warning fw-bolder">FASTZone</span>
+      <nav className="navbar navbar-expand-lg navbar-light bg-dark custom">
+        <div className="container-fluid menu-clr">
+          <span className=" fw-bolder text-info">FASTZone</span>
           <button
             className="navbar-toggler"
             type="button"
@@ -25,13 +27,13 @@ const Navigation = () => {
               <li>
                 <Link
                   to="/home"
-                  className="nav-item nav-link active text-light"
+                  className="nav-item nav-link active text-info"
                 >
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/explore" className="nav-item nav-link text-light">
+                <Link to="/explore" className="nav-item nav-link text-info">
                   Explore
                 </Link>
               </li>
@@ -39,7 +41,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/dashboard"
-                    className="nav-item nav-link text-light"
+                    className="nav-item nav-link  text-info"
                   >
                     Dashboard
                   </Link>
@@ -48,7 +50,7 @@ const Navigation = () => {
             </ul>
             <div className="d-flex">
               {user?.email && (
-                <span className="my-auto me-2 text-light">
+                <span className="my-auto me-2 text-info">
                   {user.displayName}
                 </span>
               )}
@@ -56,15 +58,15 @@ const Navigation = () => {
                 <Link to="/home">
                   <button
                     onClick={logout}
-                    className="btn btn-outline-danger"
+                    className="btn btn-outline-info"
                     type="submit"
                   >
-                    Log Out
+                   Log Out
                   </button>
                 </Link>
               ) : (
                 <Link to="/login">
-                  <button className="btn btn-outline-success" type="submit">
+                  <button className="btn btn-outline-info" type="submit">
                     Login
                   </button>
                 </Link>

@@ -59,7 +59,7 @@ const ManageProducts = () => {
               <td>${product?.price}</td>
               <td>{date}</td>
               <td>
-                <button onClick={() => handleDelete(product._id)}>
+                <button className="btn btn-primary" onClick={() => handleDelete(product._id)}>
                   Delete
                 </button>
               </td>

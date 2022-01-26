@@ -89,7 +89,7 @@ const ManageAllOrders = () => {
               <td>${order.price}</td>
               {/* <td>{date}</td> */}
               <td>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} className="d-flex">
                   <select onClick={() => handleOrderId(order?._id)} {...register("status")}>
                     <option value={order?.status}>{order?.status}</option>
                     <option value="Approved">Approved</option>
@@ -99,7 +99,7 @@ const ManageAllOrders = () => {
                 </form>
               </td>
               <td>
-                <button onClick={() => handleDelete(order._id)}>Delete</button>
+                <button className="btn btn-primary" onClick={() => handleDelete(order._id)}>Delete</button>
               </td>
             </tr>
           ))}

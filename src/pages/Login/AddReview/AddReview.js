@@ -25,7 +25,7 @@ const AddReview = () => {
   };
   return (
     <div>
-      <h1 className="text-warning">Review</h1>
+      <h1 className="text-primary">Review</h1>
       <form onSubmit={handleSubmit(onSubmit)} >
         <input
           className="input-field"
@@ -58,7 +58,7 @@ const AddReview = () => {
         <br />
 
         <input
-          className="submit-btn btn btn-danger mt-3 px-5"
+          className="submit-btn btn btn-primary text-light mt-3 px-5"
           type="submit"
           value="Send"
         />

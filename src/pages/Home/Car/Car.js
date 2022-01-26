@@ -12,11 +12,11 @@ const Car = ({car}) => {
             <div className="card p-4">
               <img style={{ width: "100%" }} src={img} alt="" />
               <div className="card-body text-start">
-                <h3>{name}</h3>
-                <p className="card-text">{description?.slice(0, 130)}..</p>
+                <h3 className='text-info'>{name}</h3>
+                <p style={{textAlign:"justify"}} className="card-text">{description?.slice(0, 130)}..</p>
                 <h5 className="card-title">${price}</h5>
                 <Link to={`/cars/${_id}`}>
-                  <button className="btn btn-info">PURCHASE NOW</button>
+                  <button className="btn btn-info text-light">PURCHASE NOW</button>
                 </Link>
               </div>
             </div>

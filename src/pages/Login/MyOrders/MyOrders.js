@@ -62,9 +62,9 @@ const MyOrders = () => {
               <td>{order?.email}</td>
               <td>{order?.productName}</td>
               <td>${order.price}</td>
-              <td className="text-success fw-bolder">{order?.status}</td>
+              <td className="text-info fw-bolder">{order?.status}</td>
               <td>
-                <button onClick={() => handleDelete(order._id)}>Delete</button>
+                <button className="btn btn-primary text-light" onClick={() => handleDelete(order._id)}>Delete</button>
               </td>
             </tr>
           ))}

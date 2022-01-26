@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="container">
           <div className="row ">
             <div className="col-lg-3">
-              <h5 className="text-start">ABOUT FASTZone</h5>
+              <h5 className="text-start">ABOUT <span className='text-info'> FASTZone</span></h5>
               <p className="text-start">
                 It is a long established fact that a reader will be distracted
                 by the readable.

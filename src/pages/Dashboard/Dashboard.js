@@ -68,12 +68,17 @@ function Dashboard(props) {
 
   const drawer = (
     <div>
+      <Link to="/home">
+        <Button color="inherit"><i className="far fa-arrow-alt-circle-left fw-bolder fs-5"></i></Button>
+      </Link>
       <Toolbar />
+      
       <Divider />
 
       <Link to={`${url}`}>
         <Button color="inherit">Dashboard</Button>
       </Link>
+      
       <br />
 
       {isAdmin && (
