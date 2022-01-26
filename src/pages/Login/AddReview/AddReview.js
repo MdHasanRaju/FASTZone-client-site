@@ -26,7 +26,9 @@ const AddReview = () => {
   return (
     <div>
       <h1 className="text-primary">Review</h1>
-      <form onSubmit={handleSubmit(onSubmit)} >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input {...register("img")} placeholder="Your img Url" required />
+        <br />
         <input
           className="input-field"
           name="customerName"
