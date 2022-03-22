@@ -13,6 +13,7 @@ const MakeAdmin = () => {
     })
       .then((res) => res.json())
       .then((result) => {
+        console.log(result);
         if(result?.[0].role === "admin") {
           alert('Admin created Successfully')
           reset();

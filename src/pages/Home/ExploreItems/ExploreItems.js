@@ -17,7 +17,7 @@ const ExploreItems = () => {
 
   return (
     <div className="mt-5">
-      <div className="text-start text-bolder  ms-3"><Link className="text-info"  to="/home">GO BACK</Link><i className="fas fa-arrow-left text-info"></i></div>
+      <div className="text-start text-bolder  ms-3"><Link className="text-info"  to="/home">GO BACK<i className="fas fa-arrow-left text-info"></i></Link></div>
       <h1 className="fw-bolder text-info">MORE CARS COLLECTION</h1>
       {!cars?.length ? (
         <div className="spinner-border text-info" role="status">

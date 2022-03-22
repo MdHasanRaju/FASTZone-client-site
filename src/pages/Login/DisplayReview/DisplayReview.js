@@ -2,6 +2,9 @@ import React from "react";
 import Rating from "react-rating";
 import { useState, useEffect } from "react";
 import ReviewDetails from "../ReviewDetails/ReviewDetails";
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import 'swiper/swiper.scss';
+
 
 const DisplayReview = () => {
   const [reviews, setReview] = useState([]);

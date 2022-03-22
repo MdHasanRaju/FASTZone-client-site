@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import swal from 'sweetalert';
 
 const ManageProducts = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -24,6 +25,7 @@ const ManageProducts = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        
         const proceed = window.confirm(
           "Stop! are you sure you want to delete?"
         );

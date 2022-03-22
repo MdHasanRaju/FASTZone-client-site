@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import { Link } from "react-router-dom";
+import swal from 'sweetalert';
 
 const CarDetails = () => {
   const [carDetails, setCarDetails] = useState({});
@@ -36,7 +37,7 @@ const CarDetails = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert("Congrats! Order Placed Successfully");
+          swal("Congrats!", "Order Placed Successfully", "success");
         }
       });
   };
@@ -74,7 +75,6 @@ const CarDetails = () => {
               {...register("phone", { required: true })}
               defaultValue=""
               placeholder="phone"
-              className="p-2 m-2"
               className="p-2 m-2 w-100"
             />
             <br />
@@ -83,9 +83,8 @@ const CarDetails = () => {
               {...register("age", { required: true })}
               defaultValue=""
               placeholder="age"
-              className="p-2 m-2"
               className="p-2 m-2 w-100"
-            />
+              />
             <br />
             <br />
 

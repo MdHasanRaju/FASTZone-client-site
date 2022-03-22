@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
+import swal from 'sweetalert';
 
 const AddProduct = () => {
   const { user } = useAuth();
@@ -23,7 +24,7 @@ const AddProduct = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert("Product Added Successfully");
+          swal("Product Added Successfully");
         }
       });
   };

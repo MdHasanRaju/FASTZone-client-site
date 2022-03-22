@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import LottieComponent from "../LottieComponent/LottieComponent";
+
+const clr = {
+  color:"rgba(116,212, 222, .5)"
+}
 
 const Register = () => {
   const [loginData, setLoginData] = useState({});
@@ -25,65 +30,77 @@ const Register = () => {
   };
 
   return (
-    <div className="container">
-      <form
-        onSubmit={handleRegisterSubmit}
-        className="w-50 mx-auto bg-secondary p-3 my-4"
-      >
-        <div className="mb-3">
-          <h2>Register</h2>
-          <input
-            className="form-control"
-            onBlur={handleOnBlur}
-            type="text"
-            name="name"
-            placeholder="Your Name"
-          />
+    <div className="container my-4">
+      <div className="row">
+        <div
+          className="col-lg-5 py-5 px-3 rounded"
+          style={{ backgroundColor: "rgba(116,212, 222, .4)",}}
+        >
+          <form onSubmit={handleRegisterSubmit}>
+            <div className="mb-3">
+              <h2 style={{color:"rgb(0, 140, 130)", fontWeight:"bold"}}>Register</h2>
+              <input
+                className="form-control"
+                onBlur={handleOnBlur}
+                type="text"
+                name="name"
+                placeholder="Your Name"
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                className="form-control"
+                onBlur={handleOnBlur}
+                type="email"
+                name="email"
+                placeholder="Your Email"
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                className="form-control"
+                onBlur={handleOnBlur}
+                type="password"
+                name="password"
+                placeholder="Your Password"
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                className="form-control"
+                onBlur={handleOnBlur}
+                type="password"
+                name="password2"
+                placeholder="Retype Your Password"
+              />
+            </div>
+            <button type="submit" style={{ backgroundColor: "rgb(23, 206, 226" }} className="btn w-100 text-light fw-bold">
+              REGISTER
+            </button>
+            <br /><br />
+            <NavLink
+              style={{ textDecoration: "none",color:"rgb(0, 140, 130)", fontWeight:"bold" }}
+              to="/login"
+            >
+              Already Registered? Please Login
+            </NavLink>
+            <br />
+            {isLoading && (
+              <div style={clr} className="spinner-border text-info" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            )}
+            {authError && (
+              <div className="alert alert-info" role="alert">
+                {authError}
+              </div>
+            )}
+          </form>
         </div>
-        <div className="mb-3">
-          <input
-            className="form-control"
-            onBlur={handleOnBlur}
-            type="email"
-            name="email"
-            placeholder="Your Email"
-          />
+        <div className="col-lg-7">
+          <LottieComponent></LottieComponent>
         </div>
-        <div className="mb-3">
-          <input
-            className="form-control"
-            onBlur={handleOnBlur}
-            type="password"
-            name="password"
-            placeholder="Your Password"
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            className="form-control"
-            onBlur={handleOnBlur}
-            type="password"
-            name="password2"
-            placeholder="Retype Your Password"
-          />
-        </div>
-        <button type="submit" className="btn btn-primary w-100">
-          REGISTER
-        </button>
-        <NavLink style={{ textDecoration: "none", color: "white" }} to="/login">
-          Already Registered? Please Login
-        </NavLink>
-        {isLoading && (
-          <div className="spinner-border text-danger" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        )}
-        {authError && (
-          <div className="alert alert-danger" role="alert">
-            {authError}
-          </div>
-        )}
-      </form>
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
 import Rating from "react-rating";
+import swal from "sweetalert";
 
 const AddReview = () => {
   const { register, handleSubmit, watch, errors, reset } = useForm();
@@ -18,7 +19,8 @@ const AddReview = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert("Thanks! For Your Comments");
+          // alert("Thanks! For Your Comments");
+          swal("Thanks!", "For Your Comments", "success");
           reset();
         }
       });

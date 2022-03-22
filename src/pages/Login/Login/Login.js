@@ -2,6 +2,7 @@ import { Alert, Button } from "@mui/material";
 import React, { useState } from "react";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import LottieLogin from "../LottieComponent/LottieLogin";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({});
@@ -30,12 +31,13 @@ const Login = () => {
 
   return (
     <div className="container my-5">
-      <form
+      <div className="row">
+        <div style={{backgroundColor:"rgba(116,212, 222, .2)"}} className="col-lg-5"><form
         onSubmit={handleLoginSubmit}
-        className="w-50 mx-auto bg-secondary py-5 px-2"
+        className="py-5 px-2"
       >
         <div className="mb-3">
-          <h2>Login</h2>
+          <h2 style={{color:"rgb(0, 137, 123)"}}>Login</h2>
           <input
             className="form-control"
             onChange={handleOnChange}
@@ -53,18 +55,19 @@ const Login = () => {
             placeholder="Your Password"
           />
         </div>
-        <button type="submit" className="btn btn-primary w-100">
+        <button type="submit" style={{ backgroundColor: "rgb(23, 206, 226" }} className="btn w-100 text-light fw-bold">
           LOGIN
         </button>
+        <br /><br />
         <NavLink
-          style={{ textDecoration: "none", color: "white" }}
+          style={{ textDecoration: "none", color:"rgb(0, 140, 130)", fontWeight:"bold" }}
           to="/register"
         >
           New User? Please Register
         </NavLink>
         <br />
         {isLoading && (
-          <div className="spinner-border text-danger" role="status">
+          <div className="spinner-border text-info" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
         )}
@@ -75,10 +78,14 @@ const Login = () => {
           </div>
         )}
         <p>-----------------------------</p>
-        <Button onClick={handleGoogleSignIn} variant="contained">
+        <Button onClick={handleGoogleSignIn} style={{backgroundColor:"rgb(23, 206, 226"}} variant="contained">
           Google Sign In
         </Button>
-      </form>
+      </form></div>
+        <div className="col-lg-7">
+          <LottieLogin></LottieLogin>
+        </div>
+      </div>
     </div>
   );
 };
