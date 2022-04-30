@@ -67,61 +67,76 @@ function Dashboard(props) {
   };
 
   const drawer = (
-    <div>
-      <Link to="/home">
-        <Button color="inherit"><i className="far fa-arrow-alt-circle-left fw-bolder fs-5"></i></Button>
-      </Link>
-      <Toolbar />
-      
+    <Box>
+      <Toolbar>
+        <Link to="/home">
+          <Button color="inherit">
+            <i className="far fa-arrow-alt-circle-left fw-bolder fs-5"></i>
+          </Button>
+        </Link>
+      </Toolbar>
+
       <Divider />
 
-      <Link to={`${url}`}>
+      {
+        isAdmin && <Box>
+          <Link to={`${url}`}>
         <Button color="inherit">Dashboard</Button>
       </Link>
-      
+
       <br />
 
-      {isAdmin && (
+      { (
         <Link to={`${url}/makeAdmin`}>
           <Button color="inherit">Make Admin</Button>
         </Link>
       )}
       <br />
-      {isAdmin && (
+      { (
         <Link to={`${url}/manageAllOrders`}>
           <Button color="inherit">Manage All Orders</Button>
         </Link>
       )}
       <br />
-      {isAdmin && (
+      { (
         <Link to={`${url}/manageProducts`}>
           <Button color="inherit">Manage Products</Button>
         </Link>
       )}
       <br />
-      {isAdmin && (
+      { (
         <Link to={`${url}/addProduct`}>
           <Button color="inherit">Add A Product</Button>
         </Link>
       )}
       <br />
-      {!isAdmin && (
+      
+        </Box>}
+        {!isAdmin&& <Box>
+        <Link to={`${url}`}>
+        <Button color="inherit">Dashboard</Button>
+      </Link>
+      
+      <br />
+      {(
         <Link to={`${url}/myOrders`}>
           <Button color="inherit">My Orders</Button>
         </Link>
       )}
       <br />
-      {!isAdmin && (
+      { (
         <Link to={`${url}/payment`}>
           <Button color="inherit">Payment</Button>
         </Link>
       )}
       <br />
-      {!isAdmin && (
+      {(
         <Link to={`${url}/addReview`}>
           <Button color="inherit">Add Review</Button>
         </Link>
       )}
+        </Box>
+      }
       <br />
       {/* <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
@@ -133,14 +148,14 @@ function Dashboard(props) {
           </ListItem>
         ))}
       </List> */}
-    </div>
+    </Box>
   );
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", overflowX: "auto" }}>
       <CssBaseline />
       <AppBar
         position="fixed"

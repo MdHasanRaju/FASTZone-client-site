@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const MyOrders = () => {
   const { user } = useAuth();
@@ -27,17 +28,37 @@ const MyOrders = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        const proceed = window.confirm(
-          "Stop! are you sure you want to delete?"
-        );
-        if (proceed) {
-          if (data.deletedCount === 1) {
-            const remainingOrders = myOrders.filter(
-              (order) => order._id !== id
-            );
-            setMyOrders(remainingOrders);
+          const proceed = window.confirm(
+            "Stop! are you sure you want to delete?"
+          );
+          if (proceed.ok) {
+            if (data.deletedCount === 1) {
+              const remainingOrders = myOrders.filter(
+                (order) => order._id !== id
+              );
+              setMyOrders(remainingOrders);
+            }
           }
-        }
+
+        // Swal.fire({
+        //   title: "Hey! are you sure you want to do this?",
+        //   showCancelButton: true,
+        //   confirmButtonText: `Delete`,
+        // }).then((result) => {
+        //   /* Read more about isConfirmed, isDenied below */
+        //   if (result.isConfirmed) {
+        //     if (data.deletedCount === 1) {
+        //       const remainingOrders = myOrders.filter(
+        //         (order) => order._id !== id
+        //       );
+        //       setMyOrders(remainingOrders);
+        //       if (result.isConfirmed.ok) {
+        //         Swal.fire("Deleted!", "", "success");
+        //       }
+        //     }
+        //   }
+          
+        // });
       });
   };
 
@@ -64,7 +85,12 @@ const MyOrders = () => {
               <td>${order.price}</td>
               <td className="text-info fw-bolder">{order?.status}</td>
               <td>
-                <button className="btn btn-primary text-light" onClick={() => handleDelete(order._id)}>Delete</button>
+                <button
+                  className="btn btn-primary text-light"
+                  onClick={() => handleDelete(order._id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

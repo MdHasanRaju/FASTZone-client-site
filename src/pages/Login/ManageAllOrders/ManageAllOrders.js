@@ -1,5 +1,7 @@
+import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const ManageAllOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
@@ -52,6 +54,8 @@ const ManageAllOrders = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+
+        
         const proceed = window.confirm(
           "Stop! are you sure you want to delete?"
         );
@@ -63,6 +67,26 @@ const ManageAllOrders = () => {
             setAllOrders(remainingOrders);
           }
         }
+
+        // Swal.fire({  
+        //   title: 'Hey! are you sure you want to do this?',  
+        //   showCancelButton: true,  
+        //   confirmButtonText: `Delete`,  
+        // }).then((result) => {  
+        //   /* Read more about isConfirmed, isDenied below */  
+        //     if (result.isConfirmed) {    
+        //       if (data.deletedCount === 1) {
+        //         const remainingOrders = allOrders.filter(
+        //           (order) => order._id !== id
+        //         );
+        //         setAllOrders(remainingOrders);
+                 
+        //       }
+        //       if (result.isConfirmed.ok) {
+        //         Swal.fire('Deleted!', '', 'success') 
+        //       }
+        //     } 
+        // });
       });
   };
 
@@ -99,7 +123,7 @@ const ManageAllOrders = () => {
                 </form>
               </td>
               <td>
-                <button className="btn btn-primary" onClick={() => handleDelete(order._id)}>Delete</button>
+                <Button variant="contained" size='small' color="primary" onClick={() => handleDelete(order._id)}>Delete</Button>
               </td>
             </tr>
           ))}

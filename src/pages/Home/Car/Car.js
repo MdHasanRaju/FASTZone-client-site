@@ -10,7 +10,7 @@ const Car = ({car}) => {
         <Fade left>
           <div className="card-group mt-3">
             <div className="card p-4">
-              <img style={{ width: "100%" }} src={img} alt="" />
+              <div><img style={{ width: "100%" }} src={img} alt="car" /></div>
               <div className="card-body text-start">
                 <h3 className='text-info'>{name}</h3>
                 <p style={{textAlign:"justify"}} className="card-text">{description?.slice(0, 130)}..</p>

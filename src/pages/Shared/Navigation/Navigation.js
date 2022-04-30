@@ -48,7 +48,7 @@ const Navigation = () => {
                 </li>
               )}
             </ul>
-            <div className="d-flex">
+            <div className="d-flex-lg">
               {user?.email && (
                 <span className="my-auto me-2 text-info">
                   {user.displayName}
