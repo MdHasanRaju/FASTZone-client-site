@@ -8,8 +8,8 @@ const Navigation = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark custom">
-      <div className="container-fluid menu-clr">
-        <span className=" fw-bolder text-info">FASTZone</span>
+      <div className="container-fluid menu-clr fs-5">
+        <span className=" fw-bolder text-info ">FASTZone</span>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,7 +21,7 @@ const Navigation = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse " id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li>
               <Link to="/home" className="nav-item nav-link active text-info">
@@ -56,11 +56,17 @@ const Navigation = () => {
                 Log Out
               </Link>
             ) : (
-              <Link to="/login">
-                <button className="btn btn-outline-info" type="submit">
-                  Login
-                </button>
-              </Link>
+              <Link
+              className="text-info text-decoration-none text-bold"
+              to="/register"
+            >
+             Register
+            </Link>
+              // <Link to="/login">
+              //   <button className="btn btn-outline-info" type="submit">
+              //     Login
+              //   </button>
+              // </Link>
             )}
           </div>
         </div>

@@ -24,16 +24,16 @@ const AddProduct = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          swal("Product Added Successfully");
+          swal("Product Added Successfully!", "success");
         }
       });
   };
 
   return (
-    <div className="my-5">
+    <div className="my-3">
       <h1 className="my-2 text-center text-primary">Add A New Product</h1>
       <div className="d-flex justify-content-center align-items-center">
-        <div className="border border-2 p-4 ">
+        <div style={{minWidth:'62%'}} className="border border-2 p-4 ">
           <div className="login-form">
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
@@ -46,7 +46,13 @@ const AddProduct = () => {
               <input
                 {...register("description")}
                 placeholder="description"
-                className="p-2 m-2"
+                className="p-2 m-2 w-100"
+                required
+              />
+              <br />
+              <input
+                {...register("model")}
+                placeholder="model"
                 className="p-2 m-2 w-100"
                 required
               />
@@ -55,7 +61,6 @@ const AddProduct = () => {
                 type="number"
                 {...register("price")}
                 placeholder="Price$"
-                className="p-2 m-2"
                 className="p-2 m-2 w-100"
                 required
               />
@@ -64,7 +69,6 @@ const AddProduct = () => {
               <input
                 {...register("img", { required: true })}
                 placeholder="Image url"
-                className="p-2 m-2"
                 className="p-2 m-2 w-100"
                 required
               />

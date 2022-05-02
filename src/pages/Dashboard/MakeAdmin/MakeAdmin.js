@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button, Alert } from "@mui/material";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const MakeAdmin = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -15,19 +16,33 @@ const MakeAdmin = () => {
       .then((result) => {
         console.log(result);
         if(result?.[0].role === "admin") {
-          alert('Admin created Successfully')
+          Swal.fire({
+            icon: 'success',
+            title: 'Admin created Successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
           reset();
+        }else {
+          Swal.fire({
+            showConfirmButton:false,
+            title: 'Admin has not been created',
+            icon: 'error',
+            iconHtml: '&#10060',
+            timer:1500
+          })
         }
       });
     
   };
 
   return (
-    <>
-      <form className="text-center my-3" onSubmit={handleSubmit(onSubmit)}>
+    <div>
+      <h4>Create An Admin</h4>
+      <div >
+      <form style={{maxWidth:'350px'}} className="text-center my-3 mx-auto" onSubmit={handleSubmit(onSubmit)}>
         <input
-          style={{ minWidth: "200px"}}
-          className="input-field"
+          className="input-field w-100"
           name="email"
           placeholder="Email"
           type="email"
@@ -35,12 +50,13 @@ const MakeAdmin = () => {
         />
         <br />
         <input
-          className="btn btn-primary mt-2"
+          className="btn btn-primary mt-2 w-50"
           type="submit"
           value="make Admin"
         />
       </form>
-    </>
+      </div>
+    </div>
   );
 };
 

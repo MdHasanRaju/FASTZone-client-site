@@ -12,75 +12,82 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import swal from "sweetalert";
 
 const ManageProducts = () => {
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-
-  // const rows = [
-  //   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  //   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  //   createData('Eclair', 262, 16.0, 24, 6.0),
-  //   createData('Cupcake', 305, 3.7, 67, 4.3),
-  //   createData('Gingerbread', 356, 16.0, 49, 3.9),
-  // ];
-
   const [allProducts, setAllProducts] = useState([]);
   const date = new Date().toLocaleDateString();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://protected-stream-32771.herokuapp.com/cars")
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
-        console.log(data);
+        setIsLoading(false);
       });
-  }, []);
+  }, [isLoading]);
 
   // manage all products delete method for admin
   const handleDelete = (id) => {
-    fetch(`https://protected-stream-32771.herokuapp.com/deletePd/${id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
 
-        const proceed = window.confirm(
-          "Stop! are you sure you want to delete?"
-        );
-        if (proceed) {
-          if (data.deletedCount === 1) {
-            const remainingOrders = allProducts.filter(
-              (order) => order._id !== id
-            );
-            setAllProducts(remainingOrders);
+    swal({
+      title: "Are You Sure you want to delete?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(
+          `https://protected-stream-32771.herokuapp.com/deletePd/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
-        }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data?.deletedCount) {
+              setIsLoading(true);
+              const remainingOrders = allProducts.filter(
+                (order) => order._id !== id
+              );
+              setAllProducts(remainingOrders);
+              setIsLoading(false);
+              swal("Your Ordered Item Deleted Successfully!", "Well Done!", {
+                icon: "success",
+                timer: 2000,
+              });
+            }
+          });
+      }
+    });
 
-        // Swal.fire({
-        //   title: "Hey! are you sure you want to do this?",
-        //   showCancelButton: true,
-        //   confirmButtonText: `Delete`,
-        // }).then((result) => {
-        //   if (result.isConfirmed) {
-        //     if (data.deletedCount === 1) {
-        //       const remainingProducts = allProducts.filter(
-        //         (order) => order._id !== id
-        //       );
+    // fetch(`https://protected-stream-32771.herokuapp.com/deletePd/${id}`, {
+    //   method: "DELETE",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
 
-        //       setAllProducts(remainingProducts)
-        //     }
-        //     if (result.isConfirmed.ok) {
-        //       Swal.fire('Deleted!', '', 'success') 
-        //     }
-        //   }
-        // });
-      });
+    //     const proceed = window.confirm(
+    //       "Stop! are you sure you want to delete?"
+    //     );
+    //     if (proceed) {
+    //       if (data.deletedCount === 1) {
+    //         const remainingOrders = allProducts.filter(
+    //           (order) => order._id !== id
+    //         );
+    //         setAllProducts(remainingOrders);
+    //       }
+    //     }
+    //   });
+
   };
 
   return (

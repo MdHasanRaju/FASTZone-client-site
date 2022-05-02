@@ -2,11 +2,14 @@ import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import swal from "sweetalert";
+import useAuth from "../../../Hooks/useAuth";
 
 const ManageAllOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
   const date = new Date().toLocaleDateString();
   const [statusId, setStatusId] = useState('')
+  const [isLoading, setIsLoading] = useState(true);
 
   // Status form
   const { register, handleSubmit } = useForm();
@@ -17,8 +20,9 @@ const ManageAllOrders = () => {
       .then((res) => res.json())
       .then((data) => {
         setAllOrders(data);
+        setIsLoading(false);
       });
-  }, []);
+  }, [isLoading]);
 
   // Status Display
   const handleOrderId = (id) => {
@@ -46,48 +50,63 @@ const ManageAllOrders = () => {
 
   // Manage All Orders Delete Method
   const handleDelete = (id) => {
-    fetch(`https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-
-        
-        const proceed = window.confirm(
-          "Stop! are you sure you want to delete?"
-        );
-        if (proceed ) {
-          if (data.deletedCount === 1) {
-            const remainingOrders = allOrders.filter(
-              (order) => order._id !== id
-            );
-            setAllOrders(remainingOrders);
+    swal({
+      title: "Are You Sure you want to delete?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(
+          `https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
-        }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data?.deletedCount) {
+              setIsLoading(true);
+              const remainingOrders = allOrders.filter(
+                (order) => order._id !== id
+              );
+              setAllOrders(remainingOrders);
+              setIsLoading(false);
+              swal("Your Ordered Item Deleted Successfully!", "Well Done!", {
+                icon: "success",
+                timer: 1220,
+              });
+            }
+          });
+      }
+    });
 
-        // Swal.fire({  
-        //   title: 'Hey! are you sure you want to do this?',  
-        //   showCancelButton: true,  
-        //   confirmButtonText: `Delete`,  
-        // }).then((result) => {  
-        //   /* Read more about isConfirmed, isDenied below */  
-        //     if (result?.isConfirmed) {    
-        //       if (data?.deletedCount === 1) {
-        //         const remainingOrders = allOrders.filter(
-        //           (order) => order._id !== id
-        //         );
-        //         setAllOrders(remainingOrders);
-                 
-        //       }
-        //       if (result?.isConfirmed) {
-        //         Swal.fire('Deleted!', '', 'success') 
-        //       }
-        //     } 
-        // });
-      });
+
+    // fetch(`https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`, {
+    //   method: "DELETE",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     const proceed = window.confirm(
+    //       "Stop! are you sure you want to delete?"
+    //     );
+    //     if (proceed ) {
+    //       if (data.deletedCount === 1) {
+    //         const remainingOrders = allOrders.filter(
+    //           (order) => order._id !== id
+    //         );
+    //         setAllOrders(remainingOrders);
+    //       }
+    //     }
+    //   });
+
+
   };
 
   return (

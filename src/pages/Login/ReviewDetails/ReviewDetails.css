@@ -12,7 +12,9 @@
   
   .carousel .slide img {
     width: 139px !important;
+    height: 139px !important;
     border-radius: 50%;
+    object-fit: cover!important;
   }
   
   .myCarousel {
@@ -124,5 +126,6 @@
     .carousel .slide img {
       width: 24% !important;
       border-radius: 50%;
+      object-fit: cover!important;
     }
   }

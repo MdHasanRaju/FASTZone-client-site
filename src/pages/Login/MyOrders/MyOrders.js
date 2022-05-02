@@ -7,6 +7,7 @@ const MyOrders = () => {
   const { user } = useAuth();
   const [myOrders, setMyOrders] = useState([]);
   const date = new Date().toLocaleDateString();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -15,57 +16,67 @@ const MyOrders = () => {
       .then((res) => res.json())
       .then((data) => {
         setMyOrders(data);
-        console.log(data);
+        setIsLoading(false)
       });
-  }, [user?.email]);
+  }, [user?.email, isLoading]);
 
   // ORDERED PRODUCT DELETE METHOD
   const handleDelete = (id) => {
-    fetch(`https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // const proceed = window.confirm(
-        //   "Stop! are you sure you want to delete?"
-        // );
-        // if (proceed.ok) {
-        //   if (data.deletedCount === 1) {
-        //     const remainingOrders = myOrders.filter(
-        //       (order) => order._id !== id
-        //     );
-        //     setMyOrders(remainingOrders);
-        //   }
-        // }
 
-        Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Delete!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            if (data.deletedCount === 1) {
+    swal({
+      title: "Are You Sure you want to delete?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(
+          `https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data?.deletedCount) {
+              setIsLoading(true);
               const remainingOrders = myOrders.filter(
                 (order) => order._id !== id
               );
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-              setMyOrders(remainingOrders)} else{return false}
-          }else {
-            return false;
-          }
-        })
-      });
+              setMyOrders(remainingOrders);
+              setIsLoading(false);
+              swal("Your Ordered Item Deleted Successfully!", "Well Done!", {
+                icon: "success",
+                timer: 1220,
+              });
+            }
+          });
+      }
+    });
+
+    // fetch(`https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`, {
+    //   method: "DELETE",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     const proceed = window.confirm(
+    //       "Stop! are you sure you want to delete?"
+    //     );
+    //     if (proceed.ok) {
+    //       if (data.deletedCount === 1) {
+    //         const remainingOrders = myOrders.filter(
+    //           (order) => order._id !== id
+    //         );
+    //         setMyOrders(remainingOrders);
+    //       }
+    //     }
+    //   });
   };
 
   return (
@@ -83,8 +94,8 @@ const MyOrders = () => {
           </tr>
         </thead>
         <tbody>
-          {myOrders.map((order) => (
-            <tr>
+          {myOrders.map((order, index) => (
+            <tr key={index}>
               <td>{order?.address}</td>
               <td>{order?.email}</td>
               <td>{order?.productName}</td>
