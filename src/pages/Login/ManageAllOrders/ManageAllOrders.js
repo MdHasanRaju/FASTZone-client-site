@@ -59,7 +59,7 @@ const ManageAllOrders = () => {
         const proceed = window.confirm(
           "Stop! are you sure you want to delete?"
         );
-        if (proceed) {
+        if (proceed ) {
           if (data.deletedCount === 1) {
             const remainingOrders = allOrders.filter(
               (order) => order._id !== id
@@ -74,15 +74,15 @@ const ManageAllOrders = () => {
         //   confirmButtonText: `Delete`,  
         // }).then((result) => {  
         //   /* Read more about isConfirmed, isDenied below */  
-        //     if (result.isConfirmed) {    
-        //       if (data.deletedCount === 1) {
+        //     if (result?.isConfirmed) {    
+        //       if (data?.deletedCount === 1) {
         //         const remainingOrders = allOrders.filter(
         //           (order) => order._id !== id
         //         );
         //         setAllOrders(remainingOrders);
                  
         //       }
-        //       if (result.isConfirmed.ok) {
+        //       if (result?.isConfirmed) {
         //         Swal.fire('Deleted!', '', 'success') 
         //       }
         //     } 

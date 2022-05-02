@@ -1,10 +1,8 @@
 import React from "react";
-import Rating from "react-rating";
 import { useState, useEffect } from "react";
 import ReviewDetails from "../ReviewDetails/ReviewDetails";
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/swiper.scss';
-
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 
 const DisplayReview = () => {
   const [reviews, setReview] = useState([]);
@@ -18,17 +16,26 @@ const DisplayReview = () => {
   }, []);
 
   return (
-    <div className="mt-5">
-      <h1 className="fw-bolder text-info">REVIEWS</h1>
+    <div className="my-5">
+      <h1 className="fw-bolder text-info">CUSTOMERS REVIEWS</h1>
       {!reviews?.length ? (
         <div className="spinner-border text-info" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
-        <div className="row pb-5">
-          {reviews?.map((review, index) => (
-            <ReviewDetails review={review} key={index}></ReviewDetails>
-          ))}
+        <div className="row py-5">
+          <Carousel
+            showArrows={true}
+            infiniteLoop={true}
+            showThumbs={false}
+            showStatus={false}
+            autoPlay={true}
+            interval={4500}
+          >
+            {reviews?.map((review, index) => (
+              <ReviewDetails review={review} key={index}></ReviewDetails>
+            ))}
+          </Carousel>
         </div>
       )}
     </div>

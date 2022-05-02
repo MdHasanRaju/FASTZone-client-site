@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './pages/Home/Home/Home';
@@ -7,15 +6,9 @@ import Register from './pages/Login/Register/Register';
 import AuthProvider from './Contexts/AuthProvider';
 import CarDetails from './pages/Home/CarDetails/CarDetails';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
-import AddReview from './pages/Login/AddReview/AddReview';
-import MyOrders from './pages/Login/MyOrders/MyOrders';
 import ExploreItems from './pages/Home/ExploreItems/ExploreItems';
 import Dashboard from './pages/Dashboard/Dashboard';
-import ManageAllOrders from './pages/Login/ManageAllOrders/ManageAllOrders';
-import Payment from './pages/Dashboard/Payment/Payment';
 import NotFound from './pages/Home/NotFound/NotFound';
-
-
 
 function App() {
   return (

@@ -67,8 +67,8 @@ function Dashboard(props) {
   };
 
   const drawer = (
-    <Box>
-      <Toolbar>
+    <Box >
+      <Toolbar sx={{display:'flex', justifyContent:{lg:'center', md:'center', sm:'center'}}}>
         <Link to="/home">
           <Button color="inherit">
             <i className="far fa-arrow-alt-circle-left fw-bolder fs-5"></i>
