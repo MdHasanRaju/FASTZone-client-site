@@ -8,7 +8,7 @@ const DashboardHome = () => {
     return (
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={12}>
-          <Typography variant='h4'>HI! WELCOME TO YOUR DASHBOARD</Typography>
+          <Typography variant='h4'>Hi! <span className='text-primary'>{user?.displayName}</span> welcome to your dashboard</Typography>
           </Grid>
         </Grid>
     );

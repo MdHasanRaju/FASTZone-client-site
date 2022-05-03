@@ -16,7 +16,7 @@ const ExploreItems = () => {
   }, []);
 
   return (
-    <div className="mt-5">
+    <div className="mt-5 container">
       <div className="text-start text-bolder  ms-3"><Link className="text-info"  to="/home">GO BACK<i className="fas fa-arrow-left text-info"></i></Link></div>
       <h1 className="fw-bolder text-info">MORE CARS COLLECTION</h1>
       {!cars?.length ? (

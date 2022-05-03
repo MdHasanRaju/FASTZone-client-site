@@ -14,7 +14,7 @@ const Cars = () => {
   }, []);
 
   return (
-    <div className="mt-5">
+    <div className="mt-5 container">
       <h1 className="fw-bolder text-info">
         CARS COLLECTION
       </h1>
