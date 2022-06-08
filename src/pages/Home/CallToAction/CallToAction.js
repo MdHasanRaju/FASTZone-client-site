@@ -9,11 +9,11 @@ const CallToAction = () => {
           <div>
             <h2>ZOOM AWAY IN</h2>
             <h4>THE NEW 2021 EDITION</h4>
-            <div className="bg-info p-2 my-3">
+            <div className="bg-primary p-2 my-3 text-light">
               <span className="fs-3 me-2">DOWNLOAD BROCHURE</span>
               <i className="far fa-file fs-3"></i>
             </div>
-            <div className="bg-info p-2">
+            <div className="bg-primary p-2 text-light">
               <span className="fs-3 me-2">DOWNLOAD PRICE LIST</span>
               <i className="far fa-list-alt fs-3"></i>
             </div>

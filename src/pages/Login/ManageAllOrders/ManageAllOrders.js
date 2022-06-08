@@ -44,6 +44,12 @@ const ManageAllOrders = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("status data", data);
+        Swal.fire({
+          text: "Status updated successfully",
+          icon: 'success',
+          showConfirmButton:false,
+          timer:2000
+        })
       });
     
   };

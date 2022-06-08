@@ -2,7 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ExploreItem from "../ExploreItem/ExploreItem";
-
+import {
+  Container,
+  Box,
+  Typography,
+  CircularProgress,
+  Grid,
+} from "@mui/material";
 
 const ExploreItems = () => {
   const [cars, setCars] = useState([]);
@@ -16,21 +22,32 @@ const ExploreItems = () => {
   }, []);
 
   return (
-    <div className="mt-5 container">
-      <div className="text-start text-bolder  ms-3"><Link className="text-info"  to="/home">GO BACK<i className="fas fa-arrow-left text-info"></i></Link></div>
-      <h1 className="fw-bolder text-info">MORE CARS COLLECTION</h1>
-      {!cars?.length ? (
-        <div className="spinner-border text-info" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      ) : (
-        <div className="row pb-5">
-          {cars?.map((car, index) => (
-            <ExploreItem car={car} key={index}></ExploreItem>
-          ))}
-        </div>
-      )}
-    </div>
+    <Box sx={{ mt: 5 }}>
+      <Container>
+        <Box sx={{ textAlign: "left", fontWeight: "bold", ms: 3 }}>
+          <Link sx={{ color: "primary.main", textDecoration:'none', }} to="/home">
+            GO BACK<i className="fas fa-arrow-left text-primary text-decoration-none"></i>
+          </Link>
+        </Box>
+        <Typography
+          sx={{ fontWeight: "bolder",fontSize:{md:24, xs:18}, color: "info.main" }}
+        >
+          MORE CARS COLLECTION
+        </Typography>
+        {!cars?.length ? (
+          <Box >
+            <CircularProgress color="info" />
+            <Box sx={{height:'300vh'}}></Box>
+          </Box>
+        ) : (
+          <Grid container spacing={3}>
+              {cars?.map((car, index) => (
+              <ExploreItem car={car} key={index}></ExploreItem>
+            ))}
+          </Grid>
+        )}
+      </Container>
+    </Box>
   );
 };
 

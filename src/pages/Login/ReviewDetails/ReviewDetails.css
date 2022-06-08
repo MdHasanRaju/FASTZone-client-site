@@ -89,7 +89,8 @@
 }
 
 .carousel.carousel-slider .control-arrow {
-  background: rgb(2, 128, 207) !important;
+  /* background: rgb(2, 128, 207) !important; */
+  background: rgb(4, 115, 184) !important;
   height: 50px !important;
   position: absolute;
   top: 35% !important;

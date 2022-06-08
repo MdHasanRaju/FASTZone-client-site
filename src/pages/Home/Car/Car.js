@@ -1,29 +1,56 @@
-import React from 'react';
+import React from "react";
 import Fade from "react-reveal/Fade";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { Box, Button, Divider, Grid, Typography } from "@mui/material";
+import { useHistory } from "react-router-dom";
 
-const Car = ({car}) => {
-    const {_id, img, name, price,description} = car;
+const Car = ({ car }) => {
+  const { _id, img, name, price, description } = car;
+  const history = useHistory();
 
-    return (
-      <div className="col-lg-4 col-md-6 col-sm-12">
-        <Fade left>
-          <div className="card-group mt-3">
-            <div className="card p-4">
-              <div><img style={{ width: "100%" }} src={img} alt="car" /></div>
-              <div className="card-body text-start">
-                <h3 className='text-info'>{name}</h3>
-                <p style={{textAlign:"justify"}} className="card-text">{description?.slice(0, 130)}..</p>
-                <h5 className="card-title">${price}</h5>
-                <Link to={`/cars/${_id}`}>
-                  <button className="btn btn-info text-light">PURCHASE NOW</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Fade>
-      </div>
-    );
+  return (
+    <Grid item xs={12} lg={4} md={4} sm={6}>
+      <Fade left triggerOnce={true}>
+        <Box sx={{ mt: 1 }}>
+          <Box sx={{ border: "1px solid lightGray", borderRadius: 2, p: 2 }}>
+            <Box
+              component="img"
+              sx={{ width: "100%", height: "200px", borderRadius: 2 }}
+              src={img}
+              alt=""
+            />
+            <Box xs={{ textAlign: "left" }}>
+              <Typography
+                sx={{ color: "gray", textAlign: "left", pt: 2 }}
+                variant="body2"
+              >
+                ${price}
+              </Typography>
+              <Typography
+                sx={{ textAlign: "left", color: "info.main" }}
+                variant="h6"
+              >
+                {name}
+              </Typography>
+              <Typography variant="body2" sx={{ textAlign: "left", pb: 2 }}>
+                {description?.slice(0, 120)}..
+              </Typography>
+            </Box>
+            <Divider></Divider>
+            <Box sx={{ display: "flex", justifyContent: "end", mt: 2 }}>
+              <Button
+                onClick={() => history.push(`/cars/${_id}`)}
+                sx={{ bgColor: "info.main", ml: "auto" }}
+                variant="contained"
+              >
+                PURCHASE NOW
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+      </Fade>
+    </Grid>
+  );
 };
 
 export default Car;
