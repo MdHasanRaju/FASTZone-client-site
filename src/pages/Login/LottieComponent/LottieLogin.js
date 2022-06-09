@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLottie } from "lottie-react";
-import animationData from '../../../assets/login-lottie-4.json';
+import animationData from '../../../assets/login3.json';
 
 const LottieLogin = () => {
     const options = {
@@ -9,7 +9,7 @@ const LottieLogin = () => {
         autoplay: true,
       };
 
-    const { View } = useLottie(options);  
+    const { View } = useLottie(options, {height:'500px'});  
 
     return View;
 };

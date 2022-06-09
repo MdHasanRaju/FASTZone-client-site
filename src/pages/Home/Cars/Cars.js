@@ -22,7 +22,7 @@ const Cars = () => {
   }, []);
 
   return (
-    <Box sx={{ mt: 5 }}>
+    <Box sx={{ mt: 5, py:5 }}>
       <Container>
         <Box sx={{ textAlign: "left", fontWeight: "bold", ms: 3 }}></Box>
         <Typography

@@ -52,38 +52,55 @@ const CarDetails = () => {
 
   return (
     <div className="container my-5 ">
-      <div className="text-start "><Link className="text-info" to="/home"><i class="fas fa-arrow-circle-left fw-bolder fs-4 ms-4"></i></Link> </div>
-      <h2 className="text-info mb-4">You have chosen: {carDetails?.name}</h2>
-      <div className="container row">
+      <div className="text-start "><Link className="text-primary" to="/home"><i class="fas fa-arrow-circle-left fw-bolder fs-4 ms-4"></i></Link> </div>
+      <h2 className="text-primary mb-4">You have chosen: {carDetails?.name}</h2>
+      <div className="container row gy-4">
         <div className="col-md-7 text-start">
-          <img style={{ width: "100%" }} src={carDetails?.img} alt="" />
-          <h5 className="w-100 mt-2 text-info">{carDetails?.name}</h5>
-          <p style={{textAlign:"justify"}} className="w-100 ">{carDetails?.description}</p>
-          <p className="w-100 fw-bolder text-info">${carDetails?.price}</p>
+          <img style={{ width: "100%", height:'50%' }} src={carDetails?.img} alt="" />
+          <h5 className="w-100 mt-2 text-primary">{carDetails?.name}</h5>
+          <p style={{textAlign:"left"}} className="w-100 mt-0">{carDetails?.description?.slice(0, 250)}.</p>
+          <p className="w-100 fw-bolder text-primary">${carDetails?.price}</p>
         </div>
 
         <div className="col-md-5">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <p className="text-start">Fill up the boxes below with required information:</p>
+          <form onSubmit={handleSubmit(onSubmit)} style={{height:'100%'}}>
+            <input
+              {...register("name", { required: false })}
+              value={user?.displayName || 'not given'}
+              className="p-2 w-100"
+            />
+            <br />
+            <br />
+            <input
+              {...register("email", { required: false })}
+              value={user?.email}
+              className="p-2 w-100"
+            />
+            <br />
+            <br />
             <input
               {...register("address", { required: true })}
               defaultValue=""
               placeholder="Your Address"
-              className="p-2 m-2 w-100"
+              className="p-2 w-100"
             />
+            <br />
             <br />
             <input
               {...register("phone", { required: true })}
               defaultValue=""
               placeholder="phone"
-              className="p-2 m-2 w-100"
+              className="p-2  w-100"
             />
+            <br />
             <br />
             <input
               type="number"
               {...register("age", { required: true })}
               defaultValue=""
               placeholder="age"
-              className="p-2 m-2 w-100"
+              className="p-2  w-100"
               />
             <br />
             <br />
@@ -93,7 +110,7 @@ const CarDetails = () => {
             <input
               type="submit"
               value="Order Now"
-              className="btn btn-info text-light ms-2 w-75"
+              className="btn btn-primary text-light ms-2 w-75"
             />
           </form>
         </div>

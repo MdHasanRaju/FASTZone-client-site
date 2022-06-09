@@ -34,11 +34,12 @@ const Register = () => {
       <div className="row">
         <div
           className="col-lg-5 py-5 px-3 rounded"
-          style={{ backgroundColor: "rgba(116,212, 222, .4)",}}
+          style={{ backgroundColor: "rgba(116,212, 222, .4)",height:"500px"}}
         >
-          <form onSubmit={handleRegisterSubmit}>
+          <form onSubmit={handleRegisterSubmit} style={{height:'100%'}}>
             <div className="mb-3">
-              <h2 style={{color:"rgb(0, 140, 130)", fontWeight:"bold"}}>Register</h2>
+              {/* color:"rgb(0, 140, 130)", */}
+              <h2 className="text-dark" style={{ fontWeight:"bold"}}>Register</h2>
               <input
                 className="form-control"
                 onBlur={handleOnBlur}
@@ -74,24 +75,27 @@ const Register = () => {
                 placeholder="Retype Your Password"
               />
             </div>
-            <button type="submit" style={{ backgroundColor: "rgb(23, 206, 226" }} className="btn w-100 text-light fw-bold">
+            {/* style={{ backgroundColor: "rgb(23, 206, 226" }}  */}
+            <button type="submit" className="btn btn-primary w-100 text-light fw-bold">
               REGISTER
             </button>
             <br /><br />
             <NavLink
-              style={{ textDecoration: "none",color:"rgb(0, 140, 130)", fontWeight:"bold" }}
+            // color:"rgb(0, 140, 130)"
+            className='text-dark'
+              style={{ textDecoration: "none", fontWeight:"bold" }}
               to="/login"
             >
               Already Registered? Please Login
             </NavLink>
             <br />
             {isLoading && (
-              <div style={clr} className="spinner-border text-info" role="status">
+              <div style={clr} className="spinner-border text-primary" role="status">
                 <span className="visually-hidden">Loading...</span>
               </div>
             )}
             {authError && (
-              <div className="alert alert-info" role="alert">
+              <div className="alert alert-primary" role="alert">
                 {authError}
               </div>
             )}

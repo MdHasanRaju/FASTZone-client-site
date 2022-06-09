@@ -5,19 +5,19 @@ import { Box } from '@mui/system';
 import { Button, Container, Divider, Grid, Stepper, Typography } from '@mui/material';
 
 const footerBg =  {
-  position: "relative",
-  paddingTop: "75px",
-  paddingBottom: "85px",
-  color: "white",
   background: `url(${Background})`,
+  color: "white",
+  paddingTop:30,
+  paddingBottom:20,
   backgroundSize:"cover",
+  backgroundRepeat:'no-repeat',
   backgroundColor: `rgba(33, 33, 33,0.95)`,
   backgroundBlendMode: `darken, luminosity`,
 }
 const Footer = () => {
     return (
       <Box style={footerBg} >
-        <Container sx={{zIndex: 1}}>
+        <Container>
           <Grid container spacing={2} >
             <Grid item lg={3} md={3} sm={3} xs={12} >
               <Typography variant='h6' sx={{textAlign:'left'}}>ABOUT <Typography component='span' variant='h6' sx={{color:"deepSkyBlue", fontWeight:900}}> FASTZone</Typography></Typography>

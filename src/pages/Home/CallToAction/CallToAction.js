@@ -3,7 +3,7 @@ import "./CallToAction.css";
 
 const CallToAction = () => {
   return (
-    <div className="Action-banner">
+    <div className="Action-banner my-5" >
       <div className="row container h-100">
         <div className="col-lg-5 d-flex justify-content-center align-items-center">
           <div>
