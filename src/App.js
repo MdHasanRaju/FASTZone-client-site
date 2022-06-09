@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <AuthProvider>
         <Router>
-          <Navigation/>
+          {/* <Navigation/> */}
           <Switch>
             <Route exact path="/">
               <Home />
