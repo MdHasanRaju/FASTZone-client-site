@@ -30,7 +30,7 @@ const Register = () => {
   };
 
   return (
-    <div className="container my-4">
+    <div className="container my-5">
       <div className="row">
         <div
           className="col-lg-5 py-5 px-3 rounded"
