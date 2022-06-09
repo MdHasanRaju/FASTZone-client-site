@@ -61,7 +61,7 @@ const Footer = () => {
           </Grid>
           <Box>
           <Divider></Divider>
-            <Box sx={{display:'flex', justifyContent:'space-between'}}>
+            <Box sx={{display:{md:'flex'}, justifyContent:'space-between'}}>
               <p className="fw-bolder">© Website 2021 | All Rights Reserved</p>
               <Box>
                 <Typography component='small' sx={{ml:2}} >Privacy</Typography>

@@ -9,12 +9,14 @@ import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import ExploreItems from './pages/Home/ExploreItems/ExploreItems';
 import Dashboard from './pages/Dashboard/Dashboard';
 import NotFound from './pages/Home/NotFound/NotFound';
+import Navigation from './pages/Shared/Navigation/Navigation';
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <Router>
+          <Navigation/>
           <Switch>
             <Route exact path="/">
               <Home />
