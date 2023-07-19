@@ -15,7 +15,7 @@ const DisplayReview = () => {
   const [reviews, setReview] = useState([]);
 
   useEffect(() => {
-    fetch("https://protected-stream-32771.herokuapp.com/review")
+    fetch("https://fastzone-server-site.onrender.com/review")
       .then((res) => res.json())
       .then((data) => {
         setReview(data);

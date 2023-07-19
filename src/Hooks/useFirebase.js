@@ -107,7 +107,7 @@ const useFirebase = () => {
 
   const saveUser = (email, displayName) => {
     const user = { email, displayName };
-    fetch("https://protected-stream-32771.herokuapp.com/users", {
+    fetch("https://fastzone-server-site.onrender.com/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

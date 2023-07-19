@@ -46,7 +46,7 @@ function Dashboard(props) {
 
   React.useEffect(() => {
     fetch(
-      `https://protected-stream-32771.herokuapp.com/checkAdmin/${user?.email}`
+      `https://fastzone-server-site.onrender.com/checkAdmin/${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {

@@ -14,7 +14,7 @@ const ExploreItems = () => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    fetch("https://protected-stream-32771.herokuapp.com/cars")
+    fetch("https://fastzone-server-site.onrender.com/cars")
       .then((res) => res.json())
       .then((data) => {
         setCars(data);

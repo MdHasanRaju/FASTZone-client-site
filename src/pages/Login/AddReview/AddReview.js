@@ -9,7 +9,7 @@ const AddReview = () => {
   const { user } = useAuth();
 
   const onSubmit = (data) => {
-    fetch("https://protected-stream-32771.herokuapp.com/addReview", {
+    fetch("https://fastzone-server-site.onrender.com/addReview", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

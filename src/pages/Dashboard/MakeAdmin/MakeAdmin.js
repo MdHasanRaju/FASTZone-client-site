@@ -7,7 +7,7 @@ const MakeAdmin = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    fetch("https://protected-stream-32771.herokuapp.com/makeAdmin", {
+    fetch("https://fastzone-server-site.onrender.com/makeAdmin", {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

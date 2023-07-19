@@ -14,7 +14,7 @@ const AddProduct = () => {
 
   const onSubmit = (data) => {
     data.email = user?.email;
-    fetch("https://protected-stream-32771.herokuapp.com/addProduct", {
+    fetch("https://fastzone-server-site.onrender.com/addProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",

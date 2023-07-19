@@ -27,7 +27,7 @@ const CarDetails = () => {
     data.status = 'Pending';
     // console.log(data);
 
-    fetch("https://protected-stream-32771.herokuapp.com/addOrders", {
+    fetch("https://fastzone-server-site.onrender.com/addOrders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -43,7 +43,7 @@ const CarDetails = () => {
   };
 
   useEffect(() => {
-    fetch(`https://protected-stream-32771.herokuapp.com/singleCar/${carId}`)
+    fetch(`https://fastzone-server-site.onrender.com/singleCar/${carId}`)
       .then((res) => res.json())
       .then((data) => {
         setCarDetails(data[0]);

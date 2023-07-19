@@ -16,7 +16,7 @@ const ManageAllOrders = () => {
 
 
   useEffect(() => {
-    fetch("https://protected-stream-32771.herokuapp.com/orders")
+    fetch("https://fastzone-server-site.onrender.com/orders")
       .then((res) => res.json())
       .then((data) => {
         setAllOrders(data);
@@ -32,7 +32,7 @@ const ManageAllOrders = () => {
 
   const onSubmit = (data) => {
     fetch(
-      `https://protected-stream-32771.herokuapp.com/statusUpdate/${statusId}`,
+      `https://fastzone-server-site.onrender.com/statusUpdate/${statusId}`,
       {
         method: "PUT",
         headers: {
@@ -64,7 +64,7 @@ const ManageAllOrders = () => {
     }).then((willDelete) => {
       if (willDelete) {
         fetch(
-          `https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`,
+          `https://fastzone-server-site.onrender.com/deleteProduct/${id}`,
           {
             method: "DELETE",
             headers: {
@@ -91,7 +91,7 @@ const ManageAllOrders = () => {
     });
 
 
-    // fetch(`https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`, {
+    // fetch(`https://fastzone-server-site.onrender.com/deleteProduct/${id}`, {
     //   method: "DELETE",
     //   headers: {
     //     "content-type": "application/json",

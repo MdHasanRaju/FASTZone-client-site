@@ -11,7 +11,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     fetch(
-      `https://protected-stream-32771.herokuapp.com/myOrders/${user?.email}`
+      `https://fastzone-server-site.onrender.com/myOrders/${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -31,7 +31,7 @@ const MyOrders = () => {
     }).then((willDelete) => {
       if (willDelete) {
         fetch(
-          `https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`,
+          `https://fastzone-server-site.onrender.com/deleteProduct/${id}`,
           {
             method: "DELETE",
             headers: {
@@ -57,7 +57,7 @@ const MyOrders = () => {
       }
     });
 
-    // fetch(`https://protected-stream-32771.herokuapp.com/deleteProduct/${id}`, {
+    // fetch(`https://fastzone-server-site.onrender.com/deleteProduct/${id}`, {
     //   method: "DELETE",
     //   headers: {
     //     "content-type": "application/json",

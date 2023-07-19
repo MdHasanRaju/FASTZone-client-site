@@ -20,7 +20,7 @@ const ManageProducts = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://protected-stream-32771.herokuapp.com/cars")
+    fetch("https://fastzone-server-site.onrender.com/cars")
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
@@ -39,7 +39,7 @@ const ManageProducts = () => {
     }).then((willDelete) => {
       if (willDelete) {
         fetch(
-          `https://protected-stream-32771.herokuapp.com/deletePd/${id}`,
+          `https://fastzone-server-site.onrender.com/deletePd/${id}`,
           {
             method: "DELETE",
             headers: {
@@ -65,7 +65,7 @@ const ManageProducts = () => {
       }
     });
 
-    // fetch(`https://protected-stream-32771.herokuapp.com/deletePd/${id}`, {
+    // fetch(`https://fastzone-server-site.onrender.com/deletePd/${id}`, {
     //   method: "DELETE",
     //   headers: {
     //     "content-type": "application/json",
